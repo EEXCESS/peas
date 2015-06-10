@@ -12,11 +12,7 @@
   "license": "MIT",
   "ignore": [
     "**/.*",
-    "bower_components",
-	"package.json",
-	"bower.json",
-	"example.js",
-	"example.html"
+    "bower_components"
   ],
   "dependencies": {
   	"jquery": "~2.1.4",
