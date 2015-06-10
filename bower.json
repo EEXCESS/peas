@@ -12,11 +12,12 @@
   "license": "MIT",
   "ignore": [
     "**/.*",
-    "node_modules",
     "bower_components",
-    "lib/",
-    "test",
-    "tests"
+	"package.json",
+	"bower.json",
+	"example.js",
+	"example.html"
+	],
   ],
   "dependencies": {
   	"jquery": "~2.1.4",
