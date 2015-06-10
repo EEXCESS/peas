@@ -1,0 +1,32 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<script data-main="main" src="bower_components/requirejs/require.js"></script>
+	</head>
+	<body>
+		<form>
+			<p>
+				Original query: <br/>
+				<textarea id="originalQuery" rows="10" cols="150">[{"text":"graz",	"weight":0.1, "reason":"manual"},{"text":"vienna", "weight":0.2, "reason":"manual"}]</textarea>
+			</p>
+			<p>
+				Number of fake queries: 
+				<select id="nbFakeQueries">
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+				</select>
+			<p>
+			</p>
+				<button id="go" type="button">Go!</button>
+			</p>
+			<p>Obfuscated query: <span id="obfuscatedQuery"></span>
+		</form>
+	</body>
+</html>

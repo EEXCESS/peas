@@ -1,0 +1,29 @@
+{
+  "name": "peas",
+  "version": "1.0",
+  "authors": [
+    "EEXCESS INSA"
+  ],
+  "description": "Description of PEAS",
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  	"jquery": "~2.1.4",
+    "requirejs": "~2.1.17"
+  },
+  "devDependencies": {
+  	"jquery": "~2.1.4",
+    "requirejs": "~2.1.17"
+  }
+}
