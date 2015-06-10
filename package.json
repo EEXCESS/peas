@@ -2,11 +2,11 @@
 	"name": "peas",
 	"version": "1.0.0",
 	"ignore": [
-		".*",
-		"package.json",
-		"bower.json",
-		"example.js",
-		"example.html"
+		"./.*",
+		"./package.json",
+		"./bower.json",
+		"./example.js",
+		"./example.html"
 	],
 	"engines": {
 		"node": ">= 0.10.0"
