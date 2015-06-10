@@ -1,8 +1,17 @@
 {
-  "engines": {
-    "node": ">= 0.10.0"
-  },
-  "devDependencies": {
-    "bower": "^1.4.1"
-  }
+	"name": "peas",
+	"version": "1.0.0",
+	"ignore": [
+		".*",
+		"package.json",
+		"bower.json",
+		"example.js",
+		"example.html"
+	],
+	"engines": {
+		"node": ">= 0.10.0"
+	},
+	"devDependencies": {
+    	"bower": "^1.4.1"
+	}
 }
