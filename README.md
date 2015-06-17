@@ -7,10 +7,8 @@ PEAS stands for Private, Efficient and Accurate (web) Search. It is composed of 
 
 ### Features
 
-In its current version, the component offers only 3 basic features: 
-- `obfuscateQuery(query, nbFakeQueries)` create a disjunctive query made of `query` and `nbFakeQueries` fake queries, 
-- `disjunctiveQueryToString(query)` transforms a disjunctive query `query` to a string, 
-- `queryToString(query)` transforms a query `query` to a string. 
+In its current version, the component offers only 1 feature: 
+- `obfuscateQuery(query, nbFakeQueries)` create a disjunctive query made of `query` and `nbFakeQueries` fake queries.
 
 ### Example
 
