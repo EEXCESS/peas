@@ -1,17 +1,28 @@
 # PEAS
-PEAS stands for Private, Efficient and Accurate (web) Search. It is composed of two protocols: 
+PEAS stands for Private, Efficient and Accurate (web) Search. 
+
+## Installation
+
+`git clone https://github.com/EEXCESS/peas.git myFolder`
+`cd myFolder`
+`git checkout master`
+`bower install`
+
+It is composed of two protocols: 
 - an unlinkability protocol (peas_unlink): aims at hiding users identity, 
 - an indistinguishability protocol (peas_indist): aims at hiding users intents by obfuscating their queries. 
 
 The request and response formats handled in these protocols are described [here](https://github.com/EEXCESS/documentation/blob/ResultFormatChange/json-exchange-format.md#request-and-response-formats-to-interact-with-the-privacy-proxy).  
 
-## Indistinguishability
+
+
+# Indistinguishability
 
 In its current version, the component offers 2 methods: 
 - `obfuscateQuery(query, nbFakeQueries)` returns a QF2 query composed of (`nbFakeQueries`+1) sub-queries; `query` (a QF1 query) is one of these sub-queries, 
 - `filterResults(results, query)` returns a RF1 result from `results` (a RF2 result); it keeps the results that are more likely to be related to `query`.
 
-### Example ofuscation
+## Example ofuscation
 
 ```javascript
 require(["peas_indist"], function(peas_indist){
@@ -25,7 +36,7 @@ require(["peas_indist"], function(peas_indist){
 });
 ```
 
-### Example filtering
+## Example filtering
 
 ```javascript
 require(["peas_indist"], function(peas_indist){
