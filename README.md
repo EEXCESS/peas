@@ -16,13 +16,13 @@ git checkout master
 bower install
 ```
 
-# Indistinguishability
+# Indistinguishability Protocol
 
 In its current version, the component offers 2 methods: 
 - `obfuscateQuery(query, nbFakeQueries)` returns a QF2 query composed of (`nbFakeQueries`+1) sub-queries; `query` (a QF1 query) is one of these sub-queries, 
 - `filterResults(results, query)` returns a RF1 result from `results` (a RF2 result); it keeps the results that are more likely to be related to `query`.
 
-## Example of ofuscation
+## Example of Ofuscation
 
 ```javascript
 require(["peas_indist"], function(peas_indist){
@@ -36,7 +36,7 @@ require(["peas_indist"], function(peas_indist){
 });
 ```
 
-## Example of filtering
+## Example of Filtering
 
 ```javascript
 require(["peas_indist"], function(peas_indist){
