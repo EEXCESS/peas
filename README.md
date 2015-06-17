@@ -1,20 +1,18 @@
 # PEAS
 PEAS stands for Private, Efficient and Accurate (web) Search. 
 
-## Installation
+It is composed of two protocols: 
+- an unlinkability protocol (peas_unlink): aims at hiding users identity, 
+- an indistinguishability protocol (peas_indist): aims at hiding users intents by obfuscating their queries. 
+
+The request and response formats handled in these protocols are described [here](https://github.com/EEXCESS/documentation/blob/ResultFormatChange/json-exchange-format.md#request-and-response-formats-to-interact-with-the-privacy-proxy). 
+
+# Installation
 
 `git clone https://github.com/EEXCESS/peas.git myFolder`
 `cd myFolder`
 `git checkout master`
 `bower install`
-
-It is composed of two protocols: 
-- an unlinkability protocol (peas_unlink): aims at hiding users identity, 
-- an indistinguishability protocol (peas_indist): aims at hiding users intents by obfuscating their queries. 
-
-The request and response formats handled in these protocols are described [here](https://github.com/EEXCESS/documentation/blob/ResultFormatChange/json-exchange-format.md#request-and-response-formats-to-interact-with-the-privacy-proxy).  
-
-
 
 # Indistinguishability
 
