@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<script src="bower_components/requirejs/require.js"></script>
+		<script>
+			require(["peas_indist"], function(peas_indist){
+				
+				document.getElementById("go").addEventListener("click", function(){ 
+					var originalQuery = JSON.parse(document.getElementById("originalQuery").value);
+					var obfuscatedQuery = JSON.parse(document.getElementById("obfuscatedQuery").value);
+					var results = JSON.parse(document.getElementById("results").value);
+					var filteredResults = peas_indist.filterResults(results, originalQuery);
+					document.getElementById("filteredResults").innerHTML = JSON.stringify(filteredResults);
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+		<form>
+			<p>
+				Original query: <br/>
+				<textarea id="originalQuery" rows="10" cols="150">{
+   "numResults":3,
+   "contextKeywords":[
+   		{"text":"graz",	"weight":0.1},
+   		{"text":"vienna", "weight":0.1}
+   ]
+}</textarea>
+			</p>
+			<p>
+				Obfuscated query: <br/>
+				<textarea id="obfuscatedQuery" rows="10" cols="150">{
+   "numResults":3,
+   "contextKeywords":[
+   		[{"text":"graz",	"weight":0.1},{"text":"vienna", "weight":0.1}],
+   		[{"text":"music",	"weight":0.1},{"text":"bass", "weight":0.1}],
+   		[{"text":"money",	"weight":0.1},{"text":"euro", "weight":0.1}]
+   ]
+}</textarea>
+			</p>
+			<p>
+				Results before filtering: <br/>
+				<textarea id="results" rows="10" cols="150">{
+	"result":[
+		[
+			{
+				"documentBadge":{"provider":"Europeana","id":"/2022365/Bristol_20Museums_2C_20Galleries_20_26_20Archives_emu_ecatalogue_britisharchaeology_167417","uri":"http://europeana.eu/resolve/record/2022365/Bristol_20Museums_2C_20Galleries_20_26_20Archives_emu_ecatalogue_britisharchaeology_167417"},
+				"title":"Rebec (musical instrument bridge)."
+			},
+			{
+				"documentBadge":{"provider":"ZBW","id":"10010759886","uri":"http://www.econbiz.de/Record/10010759886"},
+				"description":"Sampling poses an interesting problem in markets with experience goods. Free samples reveal product quality and help consumers to make informed purchase decisions (promotional effect). However, sampling may also induce consumers to substitute purchases with free consumption (displacement effect). We study this trade-o_ in the market for digital music where consumers can sample the quality of songs by watching free music videos online. Identification comes from a natural experiment in Germany, where virtually all videos that contain music are blocked on a popular video platform due to a legal dispute with representatives of the rights-holders. We show that promotional and displacement effects cancel out in the sales performance of individual songs, whereas online music videos trigger sales of albums.",
+				"title":"Video Killed the Radio Star? Online Music Videos and Digital Music Sales"
+			},
+			{
+				"documentBadge":{"provider":"Deutsche Digitale Bibliothek","id":"PBUD5Y2OVZF3HNP25AA7ONG7EPM2YPS3","uri":"https://www.deutsche-digitale-bibliothek.de/item/PBUD5Y2OVZF3HNP25AA7ONG7EPM2YPS3"},
+				"title":"Bass"
+			}
+		],
+		[
+			{
+				"documentBadge":{"provider":"Europeana","id":"/92070/BibliographicResource_1000126223366","uri":"http://europeana.eu/resolve/record/92070/BibliographicResource_1000126223366"},
+				"title":"Kirche der Barmh. Schwestern zur unbefleckten Empfängniss, Graz"
+			},
+			{
+				"documentBadge":{"provider":"mendeley","id":"d865ace7-c12d-3b8c-aff8-8028379bf360","uri":"http://www.mendeley.com/research/qualitative-approach-assessing-body-compartments-using-bioelectrical-variables"},
+				"title":"A qualitative approach to assessing body compartments using bioelectrical variables."
+			},
+			{	
+				"documentBadge":{"provider":"mendeley","id":"ec3daa22-5e1b-3182-b896-f56aeac9d552","uri":"http://www.mendeley.com/research/avifauna-vienna-atlas-breeding-birds"},
+				"title":"The avifauna of Vienna: atlas of breeding birds."
+			}
+		],
+		[
+			{
+				"documentBadge":{"provider":"Wissenmedia","id":"sl23364560","uri":"http://service.wissens-server.com/wissensserver/view.html?a=t&r=CURRENT&i=sl23364560&s=BEP&v=eexcess&w=EEXCESS"},
+				"description":"Inside MoneyInside Money [ɪnˈsaɪd ˈmʌnɪ, englisch], Innengeld.",
+				"title":"Inside Money"
+			},
+			{
+				"documentBadge":{"provider":"Deutsche Digitale Bibliothek","id":"MF67M5D6BSRPOFFUISVNMTVWSWJWFFRP","uri":"https://www.deutsche-digitale-bibliothek.de/item/MF67M5D6BSRPOFFUISVNMTVWSWJWFFRP"},
+				"title":"Walker, Francis: Money"
+			},
+			{
+				"documentBadge":{"provider":"Europeana","id":"/2022374/Manchester_20Museum_mm_emu_ecatalogue_humanities_98449","uri":"http://europeana.eu/resolve/record/2022374/Manchester_20Museum_mm_emu_ecatalogue_humanities_98449"},
+				"title":"1 euro"
+			}
+		]
+	],
+	"totalResults":9,
+	"provider":"federated"}</textarea>
+			</p>
+			<p>
+				<button id="go" type="button">Go!</button>
+			</p>
+			<p>Results after filtering: <span id="filteredResults"></span>
+		</form>
+	</body>
+</html>
