@@ -9,9 +9,9 @@ The request and response formats handled in these protocols are described [here]
 
 # Installation
 
-```sh
+```bash
 git clone https://github.com/EEXCESS/peas.git folderOfYourChoice
-cd folderOfYourChoice
+cd folderOfYourChoice/
 git checkout master
 bower install
 ```
