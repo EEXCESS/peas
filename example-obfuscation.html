@@ -12,15 +12,14 @@
 					if (originalQuery != ""){
 						var obfuscatedQueryStr;
 						if (nbFakeQueries <= 0){
-							obfuscatedQueryStr = peas_indist.queryToString(originalQuery);
+							obfuscatedQueryStr = JSON.stringify(originalQuery.contextKeywords);
 						} else {
 							var obfuscatedQuery = peas_indist.obfuscateQuery(originalQuery, nbFakeQueries);
-							obfuscatedQueryStr = peas_indist.disjunctiveQueryToString(obfuscatedQuery);
+							obfuscatedQueryStr = JSON.stringify(obfuscatedQuery.contextKeywords);
 						}
 						document.getElementById("obfuscatedQuery").innerHTML = obfuscatedQueryStr;
 					}
-				});
-				
+				});			
 			});
 		</script>
 	</head>
@@ -28,7 +27,13 @@
 		<form>
 			<p>
 				Original query: <br/>
-				<textarea id="originalQuery" rows="10" cols="150">[{"text":"graz",	"weight":0.1, "reason":"manual"},{"text":"vienna", "weight":0.2, "reason":"manual"}]</textarea>
+				<textarea id="originalQuery" rows="10" cols="150">{
+   "numResults":3,
+   "contextKeywords":[
+   		{"text":"graz",	"weight":0.1},
+		{"text":"vienna", "weight":0.1}
+   ]
+}</textarea>
 			</p>
 			<p>
 				Number of fake queries: 
@@ -38,8 +43,8 @@
 					<option value="2">2</option>
 					<option value="3">3</option>
 				</select>
-			<p>
 			</p>
+			<p>
 				<button id="go" type="button">Go!</button>
 			</p>
 			<p>Obfuscated query: <span id="obfuscatedQuery"></span>

@@ -16,10 +16,12 @@
   ],
   "dependencies": {
   	"jquery": "~2.1.4",
-    "requirejs": "~2.1.17"
+    "requirejs": "~2.1.17", 
+    "graph": "https://github.com/tantalor/graphjs.git"
   },
   "devDependencies": {
   	"jquery": "~2.1.4",
-    "requirejs": "~2.1.17"
+    "requirejs": "~2.1.17", 
+    "graph": "https://github.com/tantalor/graphjs.git"
   }
 }
