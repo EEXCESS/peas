@@ -9,13 +9,12 @@ The request and response formats handled in these protocols are described [here]
 
 # Installation
 
-`git clone https://github.com/EEXCESS/peas.git myFolder`
-
-`cd myFolder`
-
-`git checkout master`
-
-`bower install`
+```
+git clone https://github.com/EEXCESS/peas.git folderOfYourChoice`
+cd folderOfYourChoice
+git checkout master
+bower install
+```
 
 # Indistinguishability
 
