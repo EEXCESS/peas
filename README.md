@@ -8,9 +8,7 @@ PEAS stands for Private, Efficient and Accurate (web) Search. It is composed of 
 In its current version, the component offers only 1 feature: 
 - `obfuscateQuery(query, nbFakeQueries)` create a disjunctive query made of `query` and `nbFakeQueries` fake queries.
 
-### Examples
-
-#### Ofuscation
+### Example ofuscation
 
 ```javascript
 require(["peas_indist"], function(peas_indist){
@@ -24,7 +22,7 @@ require(["peas_indist"], function(peas_indist){
 });
 ```
 
-#### Filtering
+### Example filtering
 
 ```javascript
 require(["peas_indist"], function(peas_indist){
