@@ -6,7 +6,8 @@ PEAS stands for Private, Efficient and Accurate (web) Search. It is composed of 
 ## Indistinguishability
 
 In its current version, the component offers 2 methods: 
-- `obfuscateQuery(query, nbFakeQueries)` create a disjunctive query made of `query` and `nbFakeQueries` fake queries.
+- `obfuscateQuery(query, nbFakeQueries)` returns a QF2 query composed of (`nbFakeQueries`+1) sub-queries; `query` (a QF1 query) is one of these sub-queries, 
+- `filterResults(results, query)` returns a RF1 result from `results` (a RF2 result); it keeps the results that are more likely to be related to `query`.
 
 ### Example ofuscation
 
