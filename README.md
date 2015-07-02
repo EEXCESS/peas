@@ -52,31 +52,23 @@ require(["peas_indist"], function(peas_indist){
 
 ## JSON formats
 
+### Co-occurrence graph
+
 The indistinguishability protocol considers a co-occurrence graph of terms. In such a graph, vertices are terms and edges are frequencies. The JSON format used to represent co-occurrence graphs is as follow: 
 ```javascript
-[
-	{
-		"term": "aaa", 
-		"frequencies": [
-			{
-				"term": "bbb", 
-				"frequency": 2
-			}, 
-			{
-				"term": "ccc", 
-				"frequency": 5
-			}
-		]
-	}, 
-	{
-		"term": "bbb", 
-		"frequencies": [
-			{
-				"term": "ccc", 
-				"frequency": 8
-			}
-		]
-	},
-]
+[{
+	"term": "aaa", 
+	"frequencies": [
+		{"term": "bbb", "frequency": 2}, 
+		{"term": "ccc", "frequency": 5}
+	]
+},{
+	"term": "bbb", 
+	"frequencies": [
+		{"term": "ccc", "frequency": 8}
+	]
+}]
 ```
-This example represents the case where ```javascript aaa``` and ```bbb``` appeared together in 2 queries, ```aaa``` and ```ccc``` in 5 queries, and ```bbb``` and ```ccc``` in 8 queries. 
+This example represents the case where ```aaa``` and ```bbb``` appeared together in 2 queries, ```aaa``` and ```ccc``` in 5 queries, and ```bbb``` and ```ccc``` in 8 queries. As the co-occurrence relationship is symetric, the graph is somehow compacted (i.e., it is not necessary to specify that ```bbb``` and ```aaa``` appeared together in 2 queries). The lexicographical order is used to determine if a pair ```(x, y)``` should be stored. 
+
+### Cliques
