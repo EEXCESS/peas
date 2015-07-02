@@ -79,4 +79,4 @@ The indistinguishability protocol considers a co-occurrence graph of terms. In s
 	},
 ]
 ```
-This example represents the case where ```aaa``` and ```bbb``` appeared together in 2 queries, ```aaa``` and ```ccc``` in 5 queries, and ```bbb``` and ```ccc``` in 8 queries. 
+This example represents the case where ```javascript aaa``` and ```bbb``` appeared together in 2 queries, ```aaa``` and ```ccc``` in 5 queries, and ```bbb``` and ```ccc``` in 8 queries. 
