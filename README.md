@@ -1,4 +1,3 @@
-# PEAS
 PEAS stands for Private, Efficient and Accurate (web) Search. 
 
 It is composed of two protocols: 
@@ -50,3 +49,7 @@ require(["peas_indist"], function(peas_indist){
 	var filteredResults = peas_indist.filterResults(results, originalQuery);
 });
 ```
+
+## JSON formats
+
+The indistinguishability protocol considers a co-occurrence graph of terms. In such a graph, vertices are terms and edges are frequencies. 
