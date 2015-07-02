@@ -55,5 +55,27 @@ require(["peas_indist"], function(peas_indist){
 The indistinguishability protocol considers a co-occurrence graph of terms. In such a graph, vertices are terms and edges are frequencies. The JSON format used to represent co-occurrence graphs is as follow: 
 ```
 [
+	{
+		"term": "aaa", 
+		"frequencies": [
+			{
+				"term": "bbb", 
+				"frequency": 2
+			}, 
+			{
+				"term": "ccc", 
+				"frequency": 5
+			}
+		]
+	}, 
+	{
+		"term": "bbb", 
+		"frequencies": [
+			{
+				"term": "ccc", 
+				"frequency": 8
+			}
+		]
+	},
 ]
 ```
