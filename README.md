@@ -1,17 +1,27 @@
-# PEAS
-PEAS stands for Private, Efficient and Accurate (web) Search. It is composed of two protocols: 
+PEAS stands for Private, Efficient and Accurate (web) Search. 
+
+It is composed of two protocols: 
 - an unlinkability protocol (peas_unlink): aims at hiding users identity, 
 - an indistinguishability protocol (peas_indist): aims at hiding users intents by obfuscating their queries. 
 
-The request and response formats handled in these protocols are described [here](https://github.com/EEXCESS/documentation/blob/ResultFormatChange/json-exchange-format.md#request-and-response-formats-to-interact-with-the-privacy-proxy).  
+The request and response formats handled in these protocols are described [here](https://github.com/EEXCESS/documentation/blob/ResultFormatChange/json-exchange-format.md#request-and-response-formats-to-interact-with-the-privacy-proxy). 
 
-## Indistinguishability
+# Installation
+
+```bash
+git clone https://github.com/EEXCESS/peas.git folderOfYourChoice
+cd folderOfYourChoice/
+git checkout master
+bower install
+```
+
+# Indistinguishability Protocol
 
 In its current version, the component offers 2 methods: 
 - `obfuscateQuery(query, nbFakeQueries)` returns a QF2 query composed of (`nbFakeQueries`+1) sub-queries; `query` (a QF1 query) is one of these sub-queries, 
 - `filterResults(results, query)` returns a RF1 result from `results` (a RF2 result); it keeps the results that are more likely to be related to `query`.
 
-### Example ofuscation
+## Example of Ofuscation
 
 ```javascript
 require(["peas_indist"], function(peas_indist){
@@ -25,7 +35,7 @@ require(["peas_indist"], function(peas_indist){
 });
 ```
 
-### Example filtering
+## Example of Filtering
 
 ```javascript
 require(["peas_indist"], function(peas_indist){
@@ -39,3 +49,26 @@ require(["peas_indist"], function(peas_indist){
 	var filteredResults = peas_indist.filterResults(results, originalQuery);
 });
 ```
+
+## JSON formats
+
+### Co-occurrence graph
+
+The indistinguishability protocol considers a co-occurrence graph of terms. In such a graph, vertices are terms and edges are frequencies. The JSON format used to represent co-occurrence graphs is as follow: 
+```javascript
+[{
+	"term": "aaa", 
+	"frequencies": [
+		{"term": "bbb", "frequency": 2}, 
+		{"term": "ccc", "frequency": 5}
+	]
+},{
+	"term": "bbb", 
+	"frequencies": [
+		{"term": "ccc", "frequency": 8}
+	]
+}]
+```
+This example represents the case where ```aaa``` and ```bbb``` appeared together in 2 queries, ```aaa``` and ```ccc``` in 5 queries, and ```bbb``` and ```ccc``` in 8 queries. As the co-occurrence relationship is symetric, the graph is somehow compacted (i.e., it is not necessary to specify that ```bbb``` and ```aaa``` appeared together in 2 queries). The lexicographical order is used to determine if a pair ```(x, y)``` should be stored. 
+
+### Cliques
