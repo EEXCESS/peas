@@ -17,7 +17,7 @@ bower install
 
 # Indistinguishability Protocol
 
-In its current version, the component offers two techniques to do **query obfuscation** and **result set filtering**. 
+The component offers two techniques to do query obfuscation and result set filtering. 
 
 ## Ofuscation
 
@@ -48,14 +48,19 @@ require(["peas_indist"], function(peas_indist){
 
 ## Filtering
 
-- `filterResults(results, query)` returns a RF1 result from `results` (a RF2 result); it keeps the results that are more likely to be related to `query`.
+The method is defined as follows: 
+```javascript
+/**
+ * Filters a result set and returns the results corresponding to the original query given as input. 
+ * @method filterResults
+ * @param {JSONObject} results A result set of format RF2. 
+ * @param {JSONObject} query A query of format QF1. 
+ * @return {JSONObject} A result set of format RF1. 
+ */
+filterResults(results, query){ ... }
+```
 
-
-
-
-
-
-
+This example shows how to use it: 
 ```javascript
 require(["peas_indist"], function(peas_indist){
 	// Query of format QF1:
