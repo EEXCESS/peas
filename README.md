@@ -17,7 +17,11 @@ bower install
 
 # Indistinguishability Protocol
 
-In its current version, the component offers 2 methods: 
+In its current version, the component offers two techniques to do **query obfuscation** and **result set filtering**. 
+
+## Ofuscation
+
+The method is defined as follows: 
 ```javascript
 /**
  * TODO
@@ -28,10 +32,8 @@ In its current version, the component offers 2 methods:
  */
 obfuscateQuery(query, nbFakeQueries){ ... }
 ```
-- `filterResults(results, query)` returns a RF1 result from `results` (a RF2 result); it keeps the results that are more likely to be related to `query`.
 
-## Example of Ofuscation
-
+This example shows how to use it: 
 ```javascript
 require(["peas_indist"], function(peas_indist){
 	// Query of format QF1:
@@ -44,7 +46,15 @@ require(["peas_indist"], function(peas_indist){
 });
 ```
 
-## Example of Filtering
+## Filtering
+
+- `filterResults(results, query)` returns a RF1 result from `results` (a RF2 result); it keeps the results that are more likely to be related to `query`.
+
+
+
+
+
+
 
 ```javascript
 require(["peas_indist"], function(peas_indist){
