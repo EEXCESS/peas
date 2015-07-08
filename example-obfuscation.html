@@ -4,8 +4,7 @@
 		<title></title>
 		<script src="bower_components/requirejs/require.js"></script>
 		<script>
-			require(["peas_indist"], function(peas_indist){
-				
+			require(["peas_indist"], function(peas_indist){				
 				document.getElementById("go").addEventListener("click", function(){ 
 					var originalQuery = JSON.parse(document.getElementById("originalQuery").value);
 					var nbFakeQueries = document.getElementById("nbFakeQueries").value;
