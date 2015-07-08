@@ -19,7 +19,7 @@ bower install
 
 The component offers two techniques to do query obfuscation and result set filtering. 
 
-## Ofuscation
+## Obfuscation
 
 The method is defined as follows: 
 ```javascript
