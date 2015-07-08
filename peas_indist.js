@@ -15,7 +15,7 @@ define("peas_indist", ["util", "bower_components/jquery/dist/jquery", "bower_com
 	var frequencyWidth = 2; // XXX How to set it? 
 	
 	var urlProxy = "http://eexcess-dev.joanneum.at/";
-	urlProxy = "http://localhost:8080/"; // Needed to consider localhost
+	//urlProxy = "http://localhost:8080/"; // Needed to consider localhost
 	var servicesPath = "eexcess-privacy-proxy/api/v1/"
 	var serviceMcs = urlProxy + servicesPath + "getCliques";
 	var serviceCog = urlProxy + servicesPath + "getCoOccurrenceGraph";
