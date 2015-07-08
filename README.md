@@ -24,13 +24,14 @@ The component offers two techniques to do query obfuscation and result set filte
 The method is defined as follows: 
 ```javascript
 /**
- * TODO
+ * Generates an obfuscated query composed of (k+1) queries: 
+ * 1 real query (the one given as input) and k fake queries. 
  * @method obfuscateQuery
- * @param {JSONObject} query A query of format QF1. 
- * @param {Integer} nbFakeQueries The desired number of fake queries. 
- * @return {JSONObject} 
+ * @param {JSONObject} query A query of format QF1.
+ * @param {Integer} k The desired number of fake queries. 
+ * @return {JSONObject} A query of format QF2. 
  */
-obfuscateQuery(query, nbFakeQueries){ ... }
+obfuscateQuery(query, k){ ... }
 ```
 
 This example shows how to use it: 
