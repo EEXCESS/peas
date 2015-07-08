@@ -39,11 +39,11 @@ This example shows how to use it:
 require(["peas_indist"], function(peas_indist){
 	// Query of format QF1:
 	var originalQuery = JSON.parse('{"numResults":3,"contextKeywords":[{"text":"graz","weight":0.1},{"text":"vienna", "weight":0.1}]}'); // A query in the format QF1
-	var nbFakeQueries = getNumberOfFakeQueriesFromSomewhere(); // It is greater or equal to 0
+	var nbFakeQueries = 3; 
 	// Query of format QF2:
 	var obfuscatedQuery = peas_indist.obfuscateQuery(originalQuery, nbFakeQueries);  // Returns a query composed of (nbFakeQueries+1) sub-queries
-	// Now you can send the obfuscated query to the privacy proxy that will process it
-	// Notice that the orginal query could be send to the privacy proxy as well
+	// The obfuscated query can be sent to the privacy proxy to be processed
+	// The orginal query can also be send to the privacy proxy
 });
 ```
 
