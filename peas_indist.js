@@ -15,9 +15,10 @@ define("peas_indist", ["util", "bower_components/jquery/dist/jquery", "bower_com
 	var frequencyWidth = 2; // XXX How to set it? 
 	
 	var urlProxy = "http://eexcess-dev.joanneum.at/";
-	//urlProxy = "http://localhost:8080/"; // Needed to consider localhost
-	var servicesPath = "eexcess-privacy-proxy/api/v1/"
-	var serviceMcs = urlProxy + servicesPath + "getCliques";
+	//urlProxy = "http://localhost:8080/"; // For local testing
+	var servicesPath = "eexcess-privacy-proxy-1.0-SNAPSHOT/api/v1/";
+	//servicesPath = "eexcess-privacy-proxy/api/v1/";
+	var serviceMcs = urlProxy + servicesPath + "getMaximalCliques";
 	var serviceCog = urlProxy + servicesPath + "getCoOccurrenceGraph";
 	
 	var storagePrefix = "peas."
@@ -31,8 +32,10 @@ define("peas_indist", ["util", "bower_components/jquery/dist/jquery", "bower_com
 	//** Variables **
 	//***************
 
-	var mcs = initializeMcs();
-	var cog = initializeCog();
+	var cog = new Graph();
+	initializeCog();
+	var mcs = new Array();
+	initializeMcs();
 
 	//************
 	//** Module **
@@ -218,7 +221,6 @@ define("peas_indist", ["util", "bower_components/jquery/dist/jquery", "bower_com
 	 * @method initializeCog
 	 */
 	function initializeCog(){
-		var cog = new Graph();
 		var cogStoredLocally = (localStorage.getItem(storageCogId) != null);
 		var freshCogNeeded = true;
 		var lastUpdate = localStorage.getItem(storageCogLastUpdateId);
@@ -226,19 +228,18 @@ define("peas_indist", ["util", "bower_components/jquery/dist/jquery", "bower_com
 			freshCogNeeded = (util.before(new Date(lastUpdate), util.yesterday()));
 		}
 		if (!cogStoredLocally || freshCogNeeded){
+		//if (true){
 			getAndSaveRemoteCog();
 		} else {
 			var cogJson = JSON.parse(localStorage.getItem(storageCogId));
 			cog = jsonToGraph(cogJson);
 		}
-		return cog;
 	}
 	
 	/**
 	 * @method initializeMcs
 	 */
 	function initializeMcs(){
-		var mcs = new Array();
 		var mcsStoredLocally = (localStorage.getItem(storageMcsId) != null);
 		var freshMcsNeeded = true;
 		var lastUpdate = localStorage.getItem(storageMcsLastUpdateId);
@@ -246,15 +247,15 @@ define("peas_indist", ["util", "bower_components/jquery/dist/jquery", "bower_com
 			freshMcsNeeded = (util.before(new Date(lastUpdate), util.yesterday()));
 		}
 		if (!mcsStoredLocally || freshMcsNeeded){
+		//if (true){
 			mcs = getAndSaveRemoteMcs();
-			
 		} else {
 			var mcsJson = JSON.parse(localStorage.getItem(storageMcsId));
+			
 			for (var i = 0 ; i < mcsJson.length ; i++){
 				mcs[i] = jsonToGraph(mcsJson[i]);
 			}
 		}
-		return mcs;
 	}
 
 	/**
