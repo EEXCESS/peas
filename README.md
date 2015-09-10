@@ -79,8 +79,7 @@ require(["peas_indist"], function(peas_indist){
 ```javascript
 require(["peas_perso"], function(peas_perso){
 	// Query of format QF1:
-	var originalQuery = JSON.parse('{"numResults":3,"contextKeywords":[{"text":"graz","weight":0.1},{"text":"vienna", "weight":0.3}],"firstName": "John", 
-   "lastName":"Doe","gender":"male","birthDate": 123456789,"address":{"country":"USA","city":"NYC","zipCode":10001,"line1": "aaa","line2": "bbb"},"languages":[{"iso2":"fr","languageCompetenceLevel":0.25},{"iso2":"en","languageCompetenceLevel":0.75}],"interests":[{"text":"history"},{"text":"art"},{"text":"sport"}]}');
+	var originalQuery = JSON.parse('{"numResults":3,"contextKeywords":[{"text":"graz","weight":0.1},{"text":"vienna","weight":0.3}],"firstName":"John","lastName":"Doe","gender":"male","birthDate":123456789,"address":{"country":"USA","city":"NYC","zipCode":10001,"line1":"aaa","line2":"bbb"},"languages":[{"iso2":"fr","languageCompetenceLevel":0.25},{"iso2":"en","languageCompetenceLevel":0.75}],"interests":[{"text":"history"},{"text":"art"},{"text":"sport"}]}');
    	// Query of format QF1:
    	var personalizedQuery = peas_perso.personalizeQuery(originalQuery);
 ```
