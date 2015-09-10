@@ -69,7 +69,7 @@ define("util", ["bower_components/jquery/dist/jquery", "bower_components/graph/l
 		 * @param {String} word A word. 
 		 * @return {Integer} The number of times word appears in words. 
 		 */
-		nbInstrances(words, word){
+		nbInstances(words, word){
 			words = words.toLowerCase();
 			word = word.toLowerCase();
 			var array = words.split(word);

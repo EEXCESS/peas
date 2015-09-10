@@ -11,10 +11,10 @@
 					if (originalQuery != ""){
 						var obfuscatedQueryStr;
 						if (nbFakeQueries <= 0){
-							obfuscatedQueryStr = JSON.stringify(originalQuery.contextKeywords);
+							obfuscatedQueryStr = JSON.stringify(originalQuery);
 						} else {
 							var obfuscatedQuery = peas_indist.obfuscateQuery(originalQuery, nbFakeQueries);
-							obfuscatedQueryStr = JSON.stringify(obfuscatedQuery.contextKeywords);
+							obfuscatedQueryStr = JSON.stringify(obfuscatedQuery);
 						}
 						document.getElementById("obfuscatedQuery").innerHTML = obfuscatedQueryStr;
 					}

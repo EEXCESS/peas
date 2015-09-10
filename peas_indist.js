@@ -1,3 +1,10 @@
+requirejs.config({
+    paths: {
+    	up: "/Users/Thomas/git/chrome-extension/js/user_profile/", // XXX to be changed
+    	graph: "./bower_components/graph/lib/graph",
+    	jquery: "./bower_components/jquery/dist/jquery"
+    }
+});
 /**
  * TODO
  * mc = Maximal Clique
@@ -6,8 +13,8 @@
  * @module peas_indist
  * @requires util, jquery, graph
  */
-define("peas_indist", ["util", "bower_components/jquery/dist/jquery", "bower_components/graph/lib/graph"], function (util, graph) {
-
+define("peas_indist", ["util", "graph", "jquery"], function (util, graph) {
+	
 	//***************
 	//** Constants **
 	//***************
@@ -202,10 +209,10 @@ define("peas_indist", ["util", "bower_components/jquery/dist/jquery", "bower_com
 				var keyword = keywords[j];
 				var scoreKeyword = 0;
 				if (entry.title != undefined){
-					scoreKeyword += nbInstrances(entry.title, keyword.text);
+					scoreKeyword += util.nbInstances(entry.title, keyword.text);
 				}
 				if (entry.description != undefined){
-					scoreKeyword += nbInstrances(entry.description, keyword.text);
+					scoreKeyword += util.nbInstances(entry.description, keyword.text);
 				}
 				scoreEntry += scoreKeyword;
 			}
