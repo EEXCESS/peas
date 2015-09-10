@@ -65,9 +65,9 @@ This example shows how to use it:
 ```javascript
 require(["peas_indist"], function(peas_indist){
 	// Query of format QF1:
-	var originalQuery = JSON.parse('{"numResults":3,"contextKeywords":[{"text":"graz","weight":0.1},{"text":"vienna", "weight":0.1}]}'); 
+	var originalQuery = JSON.parse('{"numResults":1,"contextKeywords":[{"text":"graz","weight":0.1},{"text":"vienna", "weight":0.1}]}'); 
 	// Query of format QF2: 
-	var obfuscatedQuery = JSON.parse('{"numResults":3,"contextKeywords":[[{"text":"graz","weight":0.1},{"text":"vienna","weight":0.1}],[{"text":"music","weight":0.1},{"text":"bass","weight":0.1}],[{"text":"money","weight":0.1},{"text":"euro","weight":0.1}]]}'); 
+	var obfuscatedQuery = JSON.parse('{"numResults":1,"contextKeywords":[[{"text":"graz","weight":0.1},{"text":"vienna","weight":0.1}],[{"text":"music","weight":0.1},{"text":"bass","weight":0.1}],[{"text":"money","weight":0.1},{"text":"euro","weight":0.1}]]}'); 
 	// Results of format RF2:
 	var results = JSON.parse('{"result":[[{"documentBadge":{"provider":"Europeana","id":"/2022365/Bristol_20Museums_2C_20Galleries_20_26_20Archives_emu_ecatalogue_britisharchaeology_167417","uri":"http://europeana.eu/resolve/record/2022365/Bristol_20Museums_2C_20Galleries_20_26_20Archives_emu_ecatalogue_britisharchaeology_167417"},"title": "Rebec (musical instrument bridge)."}],[{"documentBadge":{"provider": "Europeana","id": "/92070/BibliographicResource_1000126223366","uri": "http://europeana.eu/resolve/record/92070/BibliographicResource_1000126223366"},"title": "Kirche der Barmh. Schwestern zur unbefleckten Empfngniss, Graz"}],[{"documentBadge": {"provider": "Europeana","id": "/2022374/Manchester_20Museum_mm_emu_ecatalogue_humanities_98449","uri": "http://europeana.eu/resolve/record/2022374/Manchester_20Museum_mm_emu_ecatalogue_humanities_98449"},"title": "1 euro"}]],"totalResults": 3,"provider": "federated"}');
 	// Results of format RF1
