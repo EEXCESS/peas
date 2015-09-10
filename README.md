@@ -1,8 +1,9 @@
 PEAS stands for Private, Efficient and Accurate (web) Search. 
 
-It is composed of two protocols: 
+It is composed of three protocols: 
 - an unlinkability protocol (peas_unlink): aims at hiding users identity, 
-- an indistinguishability protocol (peas_indist): aims at hiding users intents by obfuscating their queries. 
+- an indistinguishability protocol (peas_indist): aims at hiding users intents by obfuscating their queries,
+- a personalization protocol (peas_perso): aims at sharing users information without revealing private information. 
 
 The request and response formats handled in these protocols are described [here](https://github.com/EEXCESS/eexcess/wiki/Request-and-Response-format-for-call-to-federated-recommender-and-privacy-proxy#request-and-response-formats-to-interact-with-the-privacy-proxy). 
 
@@ -75,7 +76,20 @@ require(["peas_indist"], function(peas_indist){
 });
 ```
 
-## Personalization / Anonymization
+## Personalization
+
+The method is defined as follows: 
+```javascript
+/**
+ * Adds public information and remove private information. 
+ * @method personalizeQuery
+ * @param {JSONObject} query A query of format QF1. 
+ * @return {JSONObject} A query of format QF1. 
+ */
+personalizeQuery(query){ ... }
+```
+
+This example shows how to use it: 
 ```javascript
 require(["peas_perso"], function(peas_perso){
 	// Query of format QF1:
