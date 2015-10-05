@@ -4,13 +4,13 @@
 		<title></title>
 		<script src="bower_components/requirejs/require.js"></script>
 		<script>
-			require(["peas_perso"], function(peas_perso){				
+			require(["peas_adapt"], function(peas_adapt){				
 				document.getElementById("go").addEventListener("click", function(){ 
 					var originalQuery = JSON.parse(document.getElementById("originalQuery").value);
 					if (originalQuery != ""){
-						var personalizedQuery = peas_perso.personalizeQuery(originalQuery);
-						var personalizedQueryStr = JSON.stringify(personalizedQuery);
-						document.getElementById("personalizedQuery").innerHTML = personalizedQueryStr; 
+						var adaptedQuery = peas_adapt.adaptQuery(originalQuery);
+						var adaptedQueryStr = JSON.stringify(adaptedQuery);
+						document.getElementById("adaptedQuery").innerHTML = adaptedQueryStr; 
 					}
 				});
 			});
@@ -56,7 +56,7 @@
 			<p>
 				<button id="go" type="button">Go!</button>
 			</p>
-			<p>Personalized query: <span id="personalizedQuery"></span>
+			<p>Adapted query: <span id="adaptedQuery"></span>
 		</form>
 	</body>
 </html>

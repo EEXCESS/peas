@@ -5,7 +5,7 @@ requirejs.config({
     }
 });
 /** 
- * @module peas_person
+ * @module peas_adapt
  * @requires jquery
  */
 define(["up/profile", "up/constants"], function (profile, cst) {
@@ -16,15 +16,15 @@ define(["up/profile", "up/constants"], function (profile, cst) {
 	//** Module **
 	//************
 	
-	var peas_anon = {
+	var peas_adapt = {
 			
 			/**
 			 * TODO
-			 * @method personalizeQuery
+			 * @method adaptQuery
 			 * @param {JSONObject} query A query of format QF1.
 			 * @return {JSONObject} A query of format QF1. 
 			 */			
-			personalizeQuery(query){
+			adaptQuery(query){
 				var personalizedQuery = cleanQuery(query);
 				personalizedQuery = enrichQuery(personalizedQuery);
 				return personalizedQuery;
@@ -108,5 +108,5 @@ define(["up/profile", "up/constants"], function (profile, cst) {
 		return idx;
 	}
 	
-	return peas_anon;
+	return peas_adapt;
 });

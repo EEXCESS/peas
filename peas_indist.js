@@ -23,8 +23,8 @@ define("peas_indist", ["util", "graph", "jquery"], function (util, graph) {
 	
 	var urlProxy = "http://eexcess-dev.joanneum.at/";
 	//urlProxy = "http://localhost:8080/"; // Needed to consider localhost
-	var servicesPath = "eexcess-privacy-proxy/api/v1/"
-	var serviceMcs = urlProxy + servicesPath + "getCliques";
+	var servicesPath = "eexcess-privacy-proxy-issuer-1.0-SNAPSHOT/issuer/";
+	var serviceMcs = urlProxy + servicesPath + "getMaximalCliques";
 	var serviceCog = urlProxy + servicesPath + "getCoOccurrenceGraph";
 	
 	var storagePrefix = "peas."
@@ -107,8 +107,7 @@ define("peas_indist", ["util", "graph", "jquery"], function (util, graph) {
 			 * @return {JSONObject} A result set of format RF1. 
 			 */
 			filterResults(results, query){
-				var filteredResults = results;	// 'results.result' is an array of arrays and 'filteredResults.result' is just an array
-				var arrayResult = results.result; 
+				var arrayResult = results.results;
 				var maxScore = -1;
 				var maxResult = new Array();
 				for (var i = 0 ; i < arrayResult.length ; i++){
@@ -119,8 +118,9 @@ define("peas_indist", ["util", "graph", "jquery"], function (util, graph) {
 						maxResult = currentResult;
 					}
 				}
-				filteredResults.result = maxResult; // Update of the result
-				filteredResults.totalResults = maxResult.length; // Update the total number of results
+				var filteredResults = maxResult; // Update of the result
+				filteredResults.totalResults = maxResult.result.length; // Update the total number of results
+				filteredResults.queryID = results.queryID;
 				return filteredResults;
 			}
 	};
