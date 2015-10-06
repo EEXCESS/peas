@@ -1,9 +1,8 @@
 requirejs.config({
-	baseUrl: "./bower_components/",
     paths: {
-    	jquery: "jquery/dist/jquery",
-    	util: "../util",
-    	graph: "graph/lib/graph"    	
+    	jquery: "./bower_components/jquery/dist/jquery",
+    	//util: "../util",
+    	graph: "./bower_components/graph/lib/graph"    	
     }
 });
 /**
@@ -14,7 +13,7 @@ requirejs.config({
  * @module peas_indist
  * @requires util, jquery, graph
  */
-define(["jquery", "util", "graph"], function ($, util, graph) {
+define(["jquery", "./util", "graph"], function ($, util, graph) {
 	
 	//***************
 	//** Constants **
