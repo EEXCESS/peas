@@ -1,3 +1,10 @@
+requirejs.config({
+	baseUrl: "./bower_components/",
+    paths: {
+    	graph: "graph/lib/graph",
+    	util: "../util"
+    }
+});
 /**
  * TODO
  * mc = Maximal Clique
@@ -6,8 +13,8 @@
  * @module peas_indist
  * @requires util, jquery, graph
  */
-define("peas_indist", ["util", "bower_components/jquery/dist/jquery", "bower_components/graph/lib/graph"], function (util, graph) {
-
+define(["util", "graph"], function (util, graph) {
+	
 	//***************
 	//** Constants **
 	//***************
@@ -15,9 +22,8 @@ define("peas_indist", ["util", "bower_components/jquery/dist/jquery", "bower_com
 	var frequencyWidth = 2; // XXX How to set it? 
 	
 	var urlProxy = "http://eexcess-dev.joanneum.at/";
-	//urlProxy = "http://localhost:8080/"; // For local testing
-	var servicesPath = "eexcess-privacy-proxy-1.0-SNAPSHOT/api/v1/";
-	//servicesPath = "eexcess-privacy-proxy/api/v1/";
+	//urlProxy = "http://localhost:8080/"; // Needed to consider localhost
+	var servicesPath = "eexcess-privacy-proxy-issuer-1.0-SNAPSHOT/issuer/";
 	var serviceMcs = urlProxy + servicesPath + "getMaximalCliques";
 	var serviceCog = urlProxy + servicesPath + "getCoOccurrenceGraph";
 	
@@ -103,8 +109,7 @@ define("peas_indist", ["util", "bower_components/jquery/dist/jquery", "bower_com
 			 * @return {JSONObject} A result set of format RF1. 
 			 */
 			filterResults(results, query){
-				var filteredResults = results;	// 'results.result' is an array of arrays and 'filteredResults.result' is just an array
-				var arrayResult = results.result; 
+				var arrayResult = results.results;
 				var maxScore = -1;
 				var maxResult = new Array();
 				for (var i = 0 ; i < arrayResult.length ; i++){
@@ -115,8 +120,9 @@ define("peas_indist", ["util", "bower_components/jquery/dist/jquery", "bower_com
 						maxResult = currentResult;
 					}
 				}
-				filteredResults.result = maxResult; // Update of the result
-				filteredResults.totalResults = maxResult.length; // Update the total number of results
+				var filteredResults = maxResult; // Update of the result
+				filteredResults.totalResults = maxResult.result.length; // Update the total number of results
+				filteredResults.queryID = results.queryID;
 				return filteredResults;
 			}
 	};
@@ -205,10 +211,10 @@ define("peas_indist", ["util", "bower_components/jquery/dist/jquery", "bower_com
 				var keyword = keywords[j];
 				var scoreKeyword = 0;
 				if (entry.title != undefined){
-					scoreKeyword += nbInstrances(entry.title, keyword.text);
+					scoreKeyword += util.nbInstances(entry.title, keyword.text);
 				}
 				if (entry.description != undefined){
-					scoreKeyword += nbInstrances(entry.description, keyword.text);
+					scoreKeyword += util.nbInstances(entry.description, keyword.text);
 				}
 				scoreEntry += scoreKeyword;
 			}

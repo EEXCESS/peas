@@ -1,9 +1,10 @@
 /**
  * This component provides methods to execute basic operations. 
  * @module util
- * @requires jquery, graph
+ * @requires 
  */
-define("util", ["bower_components/jquery/dist/jquery", "bower_components/graph/lib/graph"], function (graph) {
+
+define([], function () {
 
 	/**
 	 * @class
@@ -69,7 +70,7 @@ define("util", ["bower_components/jquery/dist/jquery", "bower_components/graph/l
 		 * @param {String} word A word. 
 		 * @return {Integer} The number of times word appears in words. 
 		 */
-		nbInstrances(words, word){
+		nbInstances(words, word){
 			words = words.toLowerCase();
 			word = word.toLowerCase();
 			var array = words.split(word);
