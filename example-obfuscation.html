@@ -4,7 +4,11 @@
 		<title></title>
 		<script src="bower_components/requirejs/require.js"></script>
 		<script>
-			require(["peas_indist"], function(peas_indist){				
+			require(["peas_indist"], function(peas_indist){	
+				var baseUrl = "http://localhost:8080/eexcess-privacy-proxy-issuer/issuer/";
+				var mcsService = baseUrl + "getMaximalCliques";
+				var cogService = baseUrl + "getCoOccurrenceGraph";
+				peas_indist.init(mcsService, cogService);
 				document.getElementById("go").addEventListener("click", function(){ 
 					var originalQuery = JSON.parse(document.getElementById("originalQuery").value);
 					var nbFakeQueries = document.getElementById("nbFakeQueries").value;
