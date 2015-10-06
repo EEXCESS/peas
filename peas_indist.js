@@ -1,8 +1,9 @@
 requirejs.config({
 	baseUrl: "./bower_components/",
     paths: {
-    	graph: "graph/lib/graph",
-    	util: "../util"
+    	jquery: "jquery/dist/jquery",
+    	util: "../util",
+    	graph: "graph/lib/graph"    	
     }
 });
 /**
@@ -13,7 +14,7 @@ requirejs.config({
  * @module peas_indist
  * @requires util, jquery, graph
  */
-define(["util", "graph"], function (util, graph) {
+define(["jquery", "util", "graph"], function ($, util, graph) {
 	
 	//***************
 	//** Constants **
@@ -22,8 +23,9 @@ define(["util", "graph"], function (util, graph) {
 	var frequencyWidth = 2; // XXX How to set it? 
 	
 	var urlProxy = "http://eexcess-dev.joanneum.at/";
-	//urlProxy = "http://localhost:8080/"; // Needed to consider localhost
 	var servicesPath = "eexcess-privacy-proxy-issuer-1.0-SNAPSHOT/issuer/";
+	//urlProxy = "http://localhost:8080/"; 
+	//servicePath = "eexcess-privacy-proxy-issuer/issuer/";
 	var serviceMcs = urlProxy + servicesPath + "getMaximalCliques";
 	var serviceCog = urlProxy + servicesPath + "getCoOccurrenceGraph";
 	
@@ -48,6 +50,11 @@ define(["util", "graph"], function (util, graph) {
 	//************
 	
 	var peas_indist = {
+			
+			init(url, path){
+				urlProxy = url;
+				servicePath = path;
+			},
 			
 			/**
 			 * Generates an obfuscated query composed of (k+1) queries: 
@@ -253,11 +260,9 @@ define(["util", "graph"], function (util, graph) {
 			freshMcsNeeded = (util.before(new Date(lastUpdate), util.yesterday()));
 		}
 		if (!mcsStoredLocally || freshMcsNeeded){
-		//if (true){
 			mcs = getAndSaveRemoteMcs();
 		} else {
 			var mcsJson = JSON.parse(localStorage.getItem(storageMcsId));
-			
 			for (var i = 0 ; i < mcsJson.length ; i++){
 				mcs[i] = jsonToGraph(mcsJson[i]);
 			}
@@ -268,7 +273,7 @@ define(["util", "graph"], function (util, graph) {
 	 * @method initializeMcs
 	 */
 	function getAndSaveRemoteCog(){
-		jQuery.ajax({url: serviceCog}).success(function(dataCog) {
+		$.ajax({url: serviceCog}).success(function(dataCog) {
 			cog = jsonToGraph(dataCog);
 			localStorage.setItem(storageCogId, JSON.stringify(dataCog));
 			localStorage.setItem(storageCogLastUpdateId, new Date());
@@ -279,8 +284,8 @@ define(["util", "graph"], function (util, graph) {
 	 * @method getAndSaveRemoteMcs
 	 */
 	function getAndSaveRemoteMcs(){
-		var mcs = new Array();
-		jQuery.ajax({url: serviceMcs}).success(function(dataMcs) {
+		$.ajax({url: serviceMcs}).success(function(dataMcs) {
+			mcs = new Array();
 			var arr = new Array();
 			for (var i = 0 ; i < dataMcs.length ; i++){
 				var dataMc = dataMcs[i];
