@@ -1,9 +1,10 @@
 /**
  * This component provides methods to execute basic operations. 
  * @module util
- * @requires jquery, graph
+ * @requires 
  */
-define("util", ["bower_components/jquery/dist/jquery", "bower_components/graph/lib/graph"], function (graph) {
+
+define([], function () {
 
 	/**
 	 * @class

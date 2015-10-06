@@ -1,8 +1,8 @@
 requirejs.config({
+	baseUrl: "./bower_components/",
     paths: {
-    	up: "/Users/Thomas/git/chrome-extension/js/user_profile/", // XXX to be changed
-    	graph: "./bower_components/graph/lib/graph",
-    	jquery: "./bower_components/jquery/dist/jquery"
+    	graph: "graph/lib/graph",
+    	util: "../util"
     }
 });
 /**
@@ -13,7 +13,7 @@ requirejs.config({
  * @module peas_indist
  * @requires util, jquery, graph
  */
-define("peas_indist", ["util", "graph", "jquery"], function (util, graph) {
+define(["util", "graph"], function (util, graph) {
 	
 	//***************
 	//** Constants **
