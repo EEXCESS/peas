@@ -25,9 +25,9 @@ define(["up/profile", "up/constants"], function (profile, cst) {
 			 * @return {JSONObject} A query of format QF1. 
 			 */			
 			adaptQuery(query){
-				var personalizedQuery = cleanQuery(query);
-				personalizedQuery = enrichQuery(personalizedQuery);
-				return personalizedQuery;
+				var adaptedQuery = cleanQuery(query);
+				adaptedQuery = enrichQuery(adaptedQuery);
+				return adaptedQuery;
 			}
 	};
 	
