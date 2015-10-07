@@ -22,8 +22,10 @@ define(["jquery", "./util", "graph"], function ($, util, graph) {
 	var frequencyWidth = 2; // XXX How to set it? 
 	
 	var urlServices = "http://eexcess-dev.joanneum.at/eexcess-privacy-proxy-issuer-1.0-SNAPSHOT/issuer/";
-	var serviceMcs = urlServices + "getMaximalCliques";
-	var serviceCog = urlServices + "getCoOccurrenceGraph";
+	var serviceCogName =  "getCoOccurrenceGraph";
+	var serviceCog = urlServices + serviceCogName;
+	var serviceMcsName = "getMaximalCliques";
+	var serviceMcs = urlServices + serviceMcsName;
 	
 	var storagePrefix = "peas."
 	var storageMcsId = storagePrefix + "mcs";
@@ -50,9 +52,18 @@ define(["jquery", "./util", "graph"], function ($, util, graph) {
 			/**
 			 * TODO
 			 */
-			init(initServiceMcs, initServiceCog){
-				serviceMcs = initServiceMcs;
+			initUrl(url){
+				serviceCog = url + serviceCogName;
+				serviceMcs = url + serviceMcsName;
+				initializeCog();
+				initializeMcs();
+			},
+			/**
+			 * TODO
+			 */
+			initServices(initServiceCog, initServiceMcs){
 				serviceCog = initServiceCog;
+				serviceMcs = initServiceMcs;
 				initializeCog();
 				initializeMcs();
 			},
