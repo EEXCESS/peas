@@ -7,6 +7,11 @@ It is composed of three protocols:
 
 The request and response formats handled in these protocols are described [here](https://github.com/EEXCESS/eexcess/wiki/Request-and-Response-format-for-call-to-federated-recommender-and-privacy-proxy#request-and-response-formats-to-interact-with-the-privacy-proxy). 
 
+[Installation]()
+[Indistinguishability Protocol]()
+[Adaptation Protocol]()
+[JSON formats]()
+
 # Installation
 
 ```bash
@@ -104,7 +109,7 @@ require(["peas_indist"], function(peas_indist){
 });
 ```
 
-# Adaptation protocol
+# Adaptation Protocol
 
 ## Query adaptation
 
@@ -129,9 +134,9 @@ require(["peas_adapt"], function(peas_adapt){
 });
 ```
 
-## JSON formats
+# JSON formats
 
-### Co-occurrence graph
+## Co-occurrence graph
 
 The protocol considers a co-occurrence graph of terms. In such a graph, vertices are terms and edges are frequencies. The JSON format used to represent co-occurrence graphs is as follow: 
 ```javascript
@@ -150,7 +155,7 @@ The protocol considers a co-occurrence graph of terms. In such a graph, vertices
 ```
 This example represents the case where ```aaa``` and ```bbb``` appeared together in 2 queries, ```aaa``` and ```ccc``` in 5 queries, and ```bbb``` and ```ccc``` in 8 queries. As the co-occurrence relationship is symetric, the graph is somehow compacted (i.e., it is not necessary to specify that ```bbb``` and ```aaa``` appeared together in 2 queries). The lexicographical order is used to determine if a pair ```(x, y)``` should be stored. 
 
-### Cliques
+## Cliques
 
 A clique is a subgraph of a co-occurrence graph. Therefore, the JSON format to represent a clique is similar to the one used for a co-occurrence graph. A set of cliques is simply represented as an array of graph: 
 ```javascript
