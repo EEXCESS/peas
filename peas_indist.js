@@ -22,7 +22,6 @@ define(["jquery", "./util", "graph"], function ($, util, graph) {
 	var frequencyWidth = 2; // XXX How to set it? 
 	
 	var urlServices = "http://eexcess-dev.joanneum.at/eexcess-privacy-proxy-issuer-1.0-SNAPSHOT/issuer/";
-	//urlServices = "http://localhost:8080/eexcess-privacy-proxy-issuer/issuer/";
 	var serviceMcs = urlServices + "getMaximalCliques";
 	var serviceCog = urlServices + "getCoOccurrenceGraph";
 	
