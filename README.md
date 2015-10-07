@@ -76,26 +76,56 @@ require(["peas_indist"], function(peas_indist){
 });
 ```
 
-## Personalization
+## Initialization
+
+The method is defined as follows: 
+```javascript
+/**
+ * Filters a result set and returns the results corresponding to the original query given as input. 
+ * @method filterResults
+ * @param {JSONObject} results A result set of format RF2. 
+ * @param {JSONObject} query A query of format QF1. 
+ * @return {JSONObject} A result set of format RF1. 
+ */
+filterResults(results, query){ ... }
+```
+
+This example shows how to use it: 
+```javascript
+require(["peas_indist"], function(peas_indist){
+	// Query of format QF1:
+	var originalQuery = JSON.parse('{"numResults":1,"contextKeywords":[{"text":"graz","weight":0.1},{"text":"vienna", "weight":0.1}]}'); 
+	// Query of format QF2: 
+	var obfuscatedQuery = JSON.parse('{"numResults":1,"contextKeywords":[[{"text":"graz","weight":0.1},{"text":"vienna","weight":0.1}],[{"text":"music","weight":0.1},{"text":"bass","weight":0.1}],[{"text":"money","weight":0.1},{"text":"euro","weight":0.1}]]}'); 
+	// Results of format RF2:
+	var results = JSON.parse('{"result":[[{"documentBadge":{"provider":"Europeana","id":"/2022365/Bristol_20Museums_2C_20Galleries_20_26_20Archives_emu_ecatalogue_britisharchaeology_167417","uri":"http://europeana.eu/resolve/record/2022365/Bristol_20Museums_2C_20Galleries_20_26_20Archives_emu_ecatalogue_britisharchaeology_167417"},"title": "Rebec (musical instrument bridge)."}],[{"documentBadge":{"provider":"Europeana","id":"/92070/BibliographicResource_1000126223366","uri":"http://europeana.eu/resolve/record/92070/BibliographicResource_1000126223366"},"title": "Kirche der Barmh. Schwestern zur unbefleckten Empfngniss, Graz"}],[{"documentBadge":{"provider":"Europeana","id":"/2022374/Manchester_20Museum_mm_emu_ecatalogue_humanities_98449","uri": "http://europeana.eu/resolve/record/2022374/Manchester_20Museum_mm_emu_ecatalogue_humanities_98449"},"title":"1 euro"}]],"totalResults":3,"provider":"federated"}');
+	// Results of format RF1
+	var filteredResults = peas_indist.filterResults(results, originalQuery);
+});
+```
+
+# Adaptation protocol
+
+## Query adaptation
 
 The method is defined as follows: 
 ```javascript
 /**
  * Adds public information and remove private information. 
- * @method personalizeQuery
+ * @method adaptQuery
  * @param {JSONObject} query A query of format QF1. 
  * @return {JSONObject} A query of format QF1. 
  */
-personalizeQuery(query){ ... }
+adaptQuery(query){ ... }
 ```
 
 This example shows how to use it: 
 ```javascript
-require(["peas_perso"], function(peas_perso){
+require(["peas_adapt"], function(peas_adapt){
 	// Query of format QF1:
 	var originalQuery = JSON.parse('{"numResults":3,"contextKeywords":[{"text":"graz","weight":0.1},{"text":"vienna","weight":0.3}],"firstName":"John","lastName":"Doe","gender":"male","birthDate":123456789,"address":{"country":"USA","city":"NYC","zipCode":10001,"line1":"aaa","line2":"bbb"},"languages":[{"iso2":"fr","languageCompetenceLevel":0.25},{"iso2":"en","languageCompetenceLevel":0.75}],"interests":[{"text":"history"},{"text":"art"},{"text":"sport"}]}');
    	// Query of format QF1:
-   	var personalizedQuery = peas_perso.personalizeQuery(originalQuery);
+   	var adaptedQuery = peas_adapt.adaptQuery(originalQuery);
 });
 ```
 
