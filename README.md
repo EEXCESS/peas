@@ -3,7 +3,7 @@ PEAS stands for Private, Efficient and Accurate (web) Search.
 It is composed of three protocols: 
 - an unlinkability protocol (peas_unlink): aims at hiding users identity, 
 - an indistinguishability protocol (peas_indist): aims at hiding users intents by obfuscating their queries,
-- a personalization protocol (peas_perso): aims at sharing users information without revealing private information. 
+- an adaptation protocol (peas_adapt): aims at sharing users information without revealing private information. 
 
 The request and response formats handled in these protocols are described [here](https://github.com/EEXCESS/eexcess/wiki/Request-and-Response-format-for-call-to-federated-recommender-and-privacy-proxy#request-and-response-formats-to-interact-with-the-privacy-proxy). 
 
@@ -76,32 +76,63 @@ require(["peas_indist"], function(peas_indist){
 });
 ```
 
-## Personalization
+## Initialization
+
+Two methods are defined. The first one is defined as follows: 
+```javascript
+/**
+ * 
+ * @method initUrl
+ * @param {String} url ...
+ */
+initUrl(url){ ... }
+```
+
+The second one is defined as follows: 
+```javascript
+/**
+ * 
+ * @method initUrl
+ * @param {String} url ...
+ */
+initServices(service1, service2){ ... }
+```
+
+This example shows how to use it: 
+```javascript
+require(["peas_indist"], function(peas_indist){
+	
+});
+```
+
+# Adaptation Protocol
+
+## Query adaptation
 
 The method is defined as follows: 
 ```javascript
 /**
  * Adds public information and remove private information. 
- * @method personalizeQuery
+ * @method adaptQuery
  * @param {JSONObject} query A query of format QF1. 
  * @return {JSONObject} A query of format QF1. 
  */
-personalizeQuery(query){ ... }
+adaptQuery(query){ ... }
 ```
 
 This example shows how to use it: 
 ```javascript
-require(["peas_perso"], function(peas_perso){
+require(["peas_adapt"], function(peas_adapt){
 	// Query of format QF1:
 	var originalQuery = JSON.parse('{"numResults":3,"contextKeywords":[{"text":"graz","weight":0.1},{"text":"vienna","weight":0.3}],"firstName":"John","lastName":"Doe","gender":"male","birthDate":123456789,"address":{"country":"USA","city":"NYC","zipCode":10001,"line1":"aaa","line2":"bbb"},"languages":[{"iso2":"fr","languageCompetenceLevel":0.25},{"iso2":"en","languageCompetenceLevel":0.75}],"interests":[{"text":"history"},{"text":"art"},{"text":"sport"}]}');
    	// Query of format QF1:
-   	var personalizedQuery = peas_perso.personalizeQuery(originalQuery);
+   	var adaptedQuery = peas_adapt.adaptQuery(originalQuery);
 });
 ```
 
-## JSON formats
+# JSON formats
 
-### Co-occurrence graph
+## Co-occurrence graph
 
 The protocol considers a co-occurrence graph of terms. In such a graph, vertices are terms and edges are frequencies. The JSON format used to represent co-occurrence graphs is as follow: 
 ```javascript
@@ -120,7 +151,7 @@ The protocol considers a co-occurrence graph of terms. In such a graph, vertices
 ```
 This example represents the case where ```aaa``` and ```bbb``` appeared together in 2 queries, ```aaa``` and ```ccc``` in 5 queries, and ```bbb``` and ```ccc``` in 8 queries. As the co-occurrence relationship is symetric, the graph is somehow compacted (i.e., it is not necessary to specify that ```bbb``` and ```aaa``` appeared together in 2 queries). The lexicographical order is used to determine if a pair ```(x, y)``` should be stored. 
 
-### Cliques
+## Cliques
 
 A clique is a subgraph of a co-occurrence graph. Therefore, the JSON format to represent a clique is similar to the one used for a co-occurrence graph. A set of cliques is simply represented as an array of graph: 
 ```javascript
