@@ -7,12 +7,13 @@
 		requirejs.config({
 		    paths: {
 		    	jquery: "./bower_components/jquery/dist/jquery",
-		    	graph: "./bower_components/graph/lib/graph"    	
+		    	graph: "./bower_components/graph/lib/graph", 
+		    	peas: "./"
 		    }
 		});		
 		</script>
 		<script>
-			require(["peas_indist"], function(peas_indist){	
+			require(["peas/peas_indist"], function(peas_indist){	
 				/*var baseUrl = "http://localhost:8080/eexcess-privacy-proxy-issuer/issuer/";
 				var mcsService = baseUrl + "getMaximalCliques";
 				var cogService = baseUrl + "getCoOccurrenceGraph";
