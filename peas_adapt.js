@@ -10,8 +10,6 @@ requirejs.config({
  */
 define(["up/profile", "up/constants"], function (profile, cst) {
 
-	
-	
 	//************
 	//** Module **
 	//************
