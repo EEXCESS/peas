@@ -3,6 +3,8 @@
  */
 define([], function () {
 
+	// XXX Browsing history? Location? 
+	
 	//************
 	//** Module **
 	//************
@@ -17,37 +19,51 @@ define([], function () {
 			 */			
 			adaptQuery(query, policy){
 				var adaptedQuery = query;
+				var interests = [];
+				var languages = [];
+				for (var i = 0 ; i < policy.length ; i++){
+					var entry = policy[i];
+					var attribute = entry.attribute;
+					var level = entry.level;
+					if ((attribute == "ageRangePolicy") && (level == 0)){
+						delete adaptedQuery.ageRange;
+					} else if ((attribute == "genderPolicy") && (level == 0)){
+						delete adaptedQuery.gender;
+					} else if (attribute == "locationPolicy"){
+						if (level == 0){
+							delete adaptedQuery.address;
+						} else if (level == 1){
+							delete adaptedQuery.address.city;
+						} 
+					} else if (attribute.search("interestPolicy") != -1){
+						if (level != 0){
+							var idx = attribute.replace(/interestPolicy/i, "");
+							var interest = adaptedQuery.interests[idx];
+							if (interest != null){
+								interests[interests.length] = adaptedQuery.interests[idx];
+							}
+						}
+					} else if (attribute.search("languagePolicy") != -1){
+						if (level != 0){
+							var idx = attribute.replace(/languagePolicy/i, "");
+							var language = adaptedQuery.languages[idx];
+							if (language != null){
+								languages[languages.length] = adaptedQuery.languages[idx];
+							}
+						}
+					} 
+				}
+				delete adaptedQuery.interests;
+				if (interests.length != 0){
+					adaptedQuery.interests = interests;
+				}
+				delete adaptedQuery.languages;
+				if (languages.length != 0){
+					adaptedQuery.languages = languages;
+				}
 				return adaptedQuery;
 			}
 	};
-	
-	/*function cleanQuery(query){
-		var cleanedQuery = query;
-		delete cleanedQuery.firstName;
-		delete cleanedQuery.lastName;
-		delete cleanedQuery.address;
-		delete cleanedQuery.gender;
-		delete cleanedQuery.birthDate;
-		delete cleanedQuery.languages;
-		delete cleanedQuery.interests;
-		return cleanedQuery;
-	}*/
-	
-	/*function skill2level(skill){
-		var idx = null;
-		var i = 0;
-		var length = cst.TAB_LANGUAGE_SKILLS.length; 
-		var found = false;
-		while ((i < length) && (!found)){
-			found = (cst.TAB_LANGUAGE_SKILLS[i] == skill);
-			if (found){
-				idx = (length - i) / length;
-				idx = Math.round(idx * 100) / 100;
-			}
-			i++;
-		}
-		return idx;
-	}*/
 	
 	return peas_adapt;
 });

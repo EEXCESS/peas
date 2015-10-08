@@ -25,16 +25,16 @@
     "partnerList": [{
         "systemId": "Europeana"
     }],
-    "protectedPartnerList": [
-        "systemId": "Europeana"
+    "protectedPartnerList": [{
+        "systemId": "Europeana",
         "partnerKey": "ycz!djklasnbm2ia"
-    ],
+    }],
     "ageRange": 2,
     "numResults": 10,
     "gender": "female",
     "address": {
         "country": "testcountry",
-        "city": "testcity",
+        "city": "testcity"
     },
     "timeRange": {
         "start": "1980",
@@ -82,10 +82,13 @@
 			<p>
 				Policy: <br/>
 				<textarea id="policy" rows="10" cols="150">[
-	{"attribute": "name", "level": 0}, 
-	{"attribute": "country", "level": 0},
-	{"attribute": "city", "level": 0},
-	{"attribute": "ageRange", "level": 0}
+	{"attribute": "ageRangePolicy", "level": 0},
+	{"attribute": "genderPolicy", "level": 0},
+	{"attribute": "locationPolicy", "level": 2},
+	{"attribute": "interestPolicy0", "level": 1},
+	{"attribute": "interestPolicy1", "level": 1},
+	{"attribute": "languagePolicy0", "level": 1},
+	{"attribute": "languagePolicy1", "level": 1}
 ]</textarea>
 			</p>
 			<p>
