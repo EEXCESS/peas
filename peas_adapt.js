@@ -1,14 +1,7 @@
-requirejs.config({
-    baseUrl: '/bower_components/',
-    paths: {
-    	up: "/Users/Thomas/git/chrome-extension/js/user_profile/" // XXX to be changed
-    }
-});
 /** 
  * @module peas_adapt
- * @requires jquery
  */
-define(["up/profile", "up/constants"], function (profile, cst) {
+define([], function () {
 
 	//************
 	//** Module **
@@ -23,13 +16,12 @@ define(["up/profile", "up/constants"], function (profile, cst) {
 			 * @return {JSONObject} A query of format QF1. 
 			 */			
 			adaptQuery(query){
-				var adaptedQuery = cleanQuery(query);
-				adaptedQuery = enrichQuery(adaptedQuery);
+				var adaptedQuery = query;
 				return adaptedQuery;
 			}
 	};
 	
-	function cleanQuery(query){
+	/*function cleanQuery(query){
 		var cleanedQuery = query;
 		delete cleanedQuery.firstName;
 		delete cleanedQuery.lastName;
@@ -104,7 +96,7 @@ define(["up/profile", "up/constants"], function (profile, cst) {
 			i++;
 		}
 		return idx;
-	}
+	}*/
 	
 	return peas_adapt;
 });

@@ -4,6 +4,14 @@
 		<title></title>
 		<script src="bower_components/requirejs/require.js"></script>
 		<script>
+		requirejs.config({
+		    paths: {
+		    	jquery: "./bower_components/jquery/dist/jquery",
+		    	graph: "./bower_components/graph/lib/graph"    	
+		    }
+		});		
+		</script>
+		<script>
 			require(["peas_indist"], function(peas_indist){	
 				/*var baseUrl = "http://localhost:8080/eexcess-privacy-proxy-issuer/issuer/";
 				var mcsService = baseUrl + "getMaximalCliques";
