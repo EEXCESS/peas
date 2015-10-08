@@ -1,11 +1,8 @@
 /** 
  * @module peas_adapt
- * @requires jquery
  */
-//define(["up/profile", "up/constants"], function (profile, cst) {
 define([], function () {
-	
-	
+
 	//************
 	//** Module **
 	//************
@@ -20,7 +17,6 @@ define([], function () {
 			 */			
 			adaptQuery(query, policy){
 				var adaptedQuery = query;
-				
 				return adaptedQuery;
 			}
 	};

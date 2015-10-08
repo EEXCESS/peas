@@ -1,10 +1,3 @@
-requirejs.config({
-	baseUrl: "./bower_components/",
-    paths: {
-    	graph: "graph/lib/graph",
-    	util: "../util"
-    }
-});
 /**
  * TODO
  * mc = Maximal Clique
@@ -13,7 +6,7 @@ requirejs.config({
  * @module peas_indist
  * @requires util, jquery, graph
  */
-define(["util", "graph"], function (util, graph) {
+define(["jquery", "util", "graph"], function ($, util, graph) {
 	
 	//***************
 	//** Constants **
@@ -21,11 +14,11 @@ define(["util", "graph"], function (util, graph) {
 	
 	var frequencyWidth = 2; // XXX How to set it? 
 	
-	var urlProxy = "http://eexcess-dev.joanneum.at/";
-	//urlProxy = "http://localhost:8080/"; // Needed to consider localhost
-	var servicesPath = "eexcess-privacy-proxy-issuer-1.0-SNAPSHOT/issuer/";
-	var serviceMcs = urlProxy + servicesPath + "getMaximalCliques";
-	var serviceCog = urlProxy + servicesPath + "getCoOccurrenceGraph";
+	var urlServices = "https://eexcess-dev.joanneum.at/eexcess-privacy-proxy-issuer-1.0-SNAPSHOT/issuer/";
+	var serviceCogName =  "getCoOccurrenceGraph";
+	var serviceCog = urlServices + serviceCogName;
+	var serviceMcsName = "getMaximalCliques";
+	var serviceMcs = urlServices + serviceMcsName;
 	
 	var storagePrefix = "peas."
 	var storageMcsId = storagePrefix + "mcs";
@@ -38,14 +31,35 @@ define(["util", "graph"], function (util, graph) {
 	//** Variables **
 	//***************
 
-	var mcs = initializeMcs();
-	var cog = initializeCog();
+	var cog = new Graph();
+	initializeCog();
+	var mcs = new Array();
+	initializeMcs();
 
 	//************
 	//** Module **
 	//************
 	
 	var peas_indist = {
+			
+			/**
+			 * TODO
+			 */
+			initUrl(url){
+				serviceCog = url + serviceCogName;
+				serviceMcs = url + serviceMcsName;
+				initializeCog();
+				initializeMcs();
+			},
+			/**
+			 * TODO
+			 */
+			initServices(initServiceCog, initServiceMcs){
+				serviceCog = initServiceCog;
+				serviceMcs = initServiceMcs;
+				initializeCog();
+				initializeMcs();
+			},
 			
 			/**
 			 * Generates an obfuscated query composed of (k+1) queries: 
@@ -225,27 +239,25 @@ define(["util", "graph"], function (util, graph) {
 	 * @method initializeCog
 	 */
 	function initializeCog(){
-		var cog = new Graph();
 		var cogStoredLocally = (localStorage.getItem(storageCogId) != null);
 		var freshCogNeeded = true;
 		var lastUpdate = localStorage.getItem(storageCogLastUpdateId);
 		if (lastUpdate != null){
 			freshCogNeeded = (util.before(new Date(lastUpdate), util.yesterday()));
 		}
-		if (!cogStoredLocally || freshCogNeeded){
+		//if (!cogStoredLocally || freshCogNeeded){
+		if (true){
 			getAndSaveRemoteCog();
 		} else {
 			var cogJson = JSON.parse(localStorage.getItem(storageCogId));
 			cog = jsonToGraph(cogJson);
 		}
-		return cog;
 	}
 	
 	/**
 	 * @method initializeMcs
 	 */
 	function initializeMcs(){
-		var mcs = new Array();
 		var mcsStoredLocally = (localStorage.getItem(storageMcsId) != null);
 		var freshMcsNeeded = true;
 		var lastUpdate = localStorage.getItem(storageMcsLastUpdateId);
@@ -253,22 +265,21 @@ define(["util", "graph"], function (util, graph) {
 			freshMcsNeeded = (util.before(new Date(lastUpdate), util.yesterday()));
 		}
 		if (!mcsStoredLocally || freshMcsNeeded){
+		//if (true){
 			mcs = getAndSaveRemoteMcs();
-			
 		} else {
 			var mcsJson = JSON.parse(localStorage.getItem(storageMcsId));
 			for (var i = 0 ; i < mcsJson.length ; i++){
 				mcs[i] = jsonToGraph(mcsJson[i]);
 			}
 		}
-		return mcs;
 	}
 
 	/**
 	 * @method initializeMcs
 	 */
 	function getAndSaveRemoteCog(){
-		jQuery.ajax({url: serviceCog}).success(function(dataCog) {
+		$.ajax({url: serviceCog}).success(function(dataCog) {
 			cog = jsonToGraph(dataCog);
 			localStorage.setItem(storageCogId, JSON.stringify(dataCog));
 			localStorage.setItem(storageCogLastUpdateId, new Date());
@@ -279,8 +290,8 @@ define(["util", "graph"], function (util, graph) {
 	 * @method getAndSaveRemoteMcs
 	 */
 	function getAndSaveRemoteMcs(){
-		var mcs = new Array();
-		jQuery.ajax({url: serviceMcs}).success(function(dataMcs) {
+		$.ajax({url: serviceMcs}).success(function(dataMcs) {
+			mcs = new Array();
 			var arr = new Array();
 			for (var i = 0 ; i < dataMcs.length ; i++){
 				var dataMc = dataMcs[i];
