@@ -6,7 +6,7 @@
  * @module peas_indist
  * @requires util, jquery, graph
  */
-define(["jquery", "util", "graph"], function ($, util, graph) {
+define(["jquery", "peas/util", "graph"], function ($, util, graph) {
 	
 	//***************
 	//** Constants **
