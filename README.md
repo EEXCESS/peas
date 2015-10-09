@@ -105,21 +105,23 @@ require(["peas_indist"], function(peas_indist){
 The method is defined as follows: 
 ```javascript
 /**
- * Adds public information and remove private information. 
+ * Allows to adapt a query according to a set of policies. 
  * @method adaptQuery
- * @param {JSONObject} query A query of format QF1. 
+ * @param {JSONObject} query A query of format QF1.
+ * @param {JSONObject} policies A set of policies (attribute and level).
  * @return {JSONObject} A query of format QF1. 
- */
-adaptQuery(query){ ... }
+ */			
+adaptQuery(query, policies){ ... }
 ```
 
 This example shows how to use it: 
 ```javascript
 require(["peas_adapt"], function(peas_adapt){
 	// Query of format QF1:
-	var originalQuery = JSON.parse('{"numResults":3,"contextKeywords":[{"text":"graz","weight":0.1},{"text":"vienna","weight":0.3}],"firstName":"John","lastName":"Doe","gender":"male","birthDate":123456789,"address":{"country":"USA","city":"NYC","zipCode":10001,"line1":"aaa","line2":"bbb"},"languages":[{"iso2":"fr","languageCompetenceLevel":0.25},{"iso2":"en","languageCompetenceLevel":0.75}],"interests":[{"text":"history"},{"text":"art"},{"text":"sport"}]}');
+	var originalQuery = JSON.parse('{"partnerList": [{"systemId": "Europeana"}], "protectedPartnerList": [{"systemId": "Europeana", "partnerKey": "ycz!djklasnbm2ia" }], "ageRange": 2, "numResults": 10, "gender": "female", "address": {"country": "testcountry", "city": "testcity"}, "timeRange": {"start": "1980", "end": "2000"}, "languages": [{"iso2": "de","languageCompetenceLevel": 0.1}, {"iso2": "en","languageCompetenceLevel": 0.1}], "userCredentials": [{"systemId": "Wissenmedia","login": "me@partner.x","securityToken": "sdjalkej21!#"}], "contextKeywords": [{"text": "women","type": "misc","uri": "http://dbpedia.com/resource/woman","isMainTopic": false}], "context": {"reason": "manual","value": "www.wikipedia.at"}, "interests": [{"text": "text","weight": 0.1,"confidence": 0.1,"competenceLevel": 0.1,"source": "source","uri": "http://dsjkdjas.de"}, {"text": "text2","weight": 0.2,"confidence": 0.2,"competenceLevel": 0.2,"source": "source2","uri": "http://google.de"}]}');
+	var policies = '[{"attribute": "ageRangePolicy", "level": 0},{"attribute": "genderPolicy", "level": 0},{"attribute": "locationPolicy", "level": 2},{"attribute": "interestPolicy0", "level": 1},{"attribute": "interestPolicy1", "level": 1},{"attribute": "languagePolicy0", "level": 1},{"attribute": "languagePolicy1", "level": 1}]';
    	// Query of format QF1:
-   	var adaptedQuery = peas_adapt.adaptQuery(originalQuery);
+   	var adaptedQuery = peas_adapt.adaptQuery(originalQuery, policies);
 });
 ```
 
