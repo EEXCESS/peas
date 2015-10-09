@@ -1,7 +1,7 @@
 PEAS stands for Private, Efficient and Accurate (web) Search. 
 
 It is composed of three protocols: 
-- an unlinkability protocol (peas_unlink): aims at hiding users identity, 
+- an [unlinkability protocol](peas#indistinguishability-protocol) (peas_unlink): aims at hiding users identity, 
 - an indistinguishability protocol (peas_indist): aims at hiding users intents by obfuscating their queries,
 - an adaptation protocol (peas_adapt): aims at sharing users information without revealing private information. 
 
