@@ -7,6 +7,8 @@ It is composed of three protocols:
 
 The request and response formats handled in these protocols are described [here](https://github.com/EEXCESS/eexcess/wiki/Request-and-Response-format-for-call-to-federated-recommender-and-privacy-proxy#request-and-response-formats-to-interact-with-the-privacy-proxy). 
 
+The PEAS protocol considers specific formats to exchange data. These formats are described [here](https://github.com/EEXCESS/peas#json-formats). 
+
 # Installation
 
 ```bash
