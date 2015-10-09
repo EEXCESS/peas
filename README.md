@@ -160,3 +160,18 @@ A clique is a subgraph of a co-occurrence graph. Therefore, the JSON format to r
 	}]
 ]
 ```
+
+## Policies
+
+A set of policies is represented as follows: 
+```javascript
+[
+	{"attribute": "ageRangePolicy", "level": 0},
+	{"attribute": "genderPolicy", "level": 0},
+	{"attribute": "locationPolicy", "level": 2},
+	{"attribute": "interestPolicy0", "level": 1},
+	{"attribute": "interestPolicy1", "level": 1},
+	{"attribute": "languagePolicy0", "level": 1},
+	{"attribute": "languagePolicy1", "level": 1}
+]
+```
