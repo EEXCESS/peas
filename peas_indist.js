@@ -33,7 +33,7 @@ define(["jquery", "peas/util", "graph"], function ($, util, graph) {
 
 	var cog = new Graph();
 	initializeCog();
-	var mcs = new Array();
+	var mcs = [];
 	initializeMcs();
 
 	//************
@@ -117,7 +117,7 @@ define(["jquery", "peas/util", "graph"], function ($, util, graph) {
 			filterResults(results, query){
 				var arrayResult = results.results;
 				var maxScore = -1;
-				var maxResult = new Array();
+				var maxResult = [];
 				for (var i = 0 ; i < arrayResult.length ; i++){
 					var currentResult = arrayResult[i];
 					var currentScore = getScore(currentResult, query.contextKeywords);
@@ -208,10 +208,11 @@ define(["jquery", "peas/util", "graph"], function ($, util, graph) {
 		// 'result' is an array of entry (each entry is a recommendation)
 		// 'keywords' is an array of keywords (term + weight)
 		var score = 0;
+		var resultsEntries = result.result;
 		var nbKeywords = keywords.length;
-		var nbEntries = result.length;
+		var nbEntries = resultsEntries.length;
 		for (var i = 0 ; i < nbEntries ; i++){
-			var entry = result[i];
+			var entry = resultsEntries[i];
 			var scoreEntry = 0;
 			for (var j = 0 ; j < nbKeywords ; j++){
 				var keyword = keywords[j];
