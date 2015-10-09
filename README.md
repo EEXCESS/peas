@@ -1,9 +1,9 @@
 PEAS stands for Private, Efficient and Accurate (web) Search. 
 
 It is composed of three protocols: 
-- an [unlinkability protocol](peas#indistinguishability-protocol) (peas_unlink): aims at hiding users identity, 
+- an [unlinkability protocol](https://github.com/EEXCESS/peas#indistinguishability-protocol) (peas_unlink): aims at hiding users identity, 
 - an indistinguishability protocol (peas_indist): aims at hiding users intents by obfuscating their queries,
-- an adaptation protocol (peas_adapt): aims at sharing users information without revealing private information. 
+- an [adaptation protocol](https://github.com/EEXCESS/peas#adaptation-protocol) (peas_adapt): aims at sharing users information without revealing private information. 
 
 The request and response formats handled in these protocols are described [here](https://github.com/EEXCESS/eexcess/wiki/Request-and-Response-format-for-call-to-federated-recommender-and-privacy-proxy#request-and-response-formats-to-interact-with-the-privacy-proxy). 
 
