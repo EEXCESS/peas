@@ -78,30 +78,21 @@ require(["peas_indist"], function(peas_indist){
 
 ## Initialization
 
-Two methods are defined. The first one is defined as follows: 
+The method is defined as follows: 
 ```javascript
 /**
- * 
+ * Allows to change the default URL of the server hosting the PEAS external services. 
+ * The default value is: https://eexcess-dev.joanneum.at/eexcess-privacy-proxy-issuer-1.0-SNAPSHOT/issuer/
  * @method initUrl
- * @param {String} url ...
+ * @param {String} url URL of the server. 
  */
-initUrl(url){ ... }
+init(url){ ... }
 ```
 
-The second one is defined as follows: 
+This example shows how to use them: 
 ```javascript
-/**
- * 
- * @method initUrl
- * @param {String} url ...
- */
-initServices(service1, service2){ ... }
-```
-
-This example shows how to use it: 
-```javascript
-require(["peas_indist"], function(peas_indist){
-	
+require(["peas_adapt"], function(peas_adapt){
+	peas_adapt.init("http://localhost:8080/eexcess-privacy-proxy-issuer-1.0-SNAPSHOT/issuer/");
 });
 ```
 
