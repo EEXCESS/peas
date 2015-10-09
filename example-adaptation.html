@@ -7,9 +7,9 @@
 			require(["peas_adapt"], function(peas_adapt){				
 				document.getElementById("go").addEventListener("click", function(){ 
 					var originalQuery = JSON.parse(document.getElementById("originalQuery").value);
-					var policy = JSON.parse(document.getElementById("policy").value);
+					var policies = JSON.parse(document.getElementById("policies").value);
 					if (originalQuery != ""){
-						var adaptedQuery = peas_adapt.adaptQuery(originalQuery, policy);
+						var adaptedQuery = peas_adapt.adaptQuery(originalQuery, policies);
 						var adaptedQueryStr = JSON.stringify(adaptedQuery);
 						document.getElementById("adaptedQuery").innerHTML = adaptedQueryStr; 
 					}
@@ -80,8 +80,8 @@
 }</textarea>
 
 			<p>
-				Policy: <br/>
-				<textarea id="policy" rows="10" cols="150">[
+				Policies: <br/>
+				<textarea id="policies" rows="10" cols="150">[
 	{"attribute": "ageRangePolicy", "level": 0},
 	{"attribute": "genderPolicy", "level": 0},
 	{"attribute": "locationPolicy", "level": 2},

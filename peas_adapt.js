@@ -15,14 +15,15 @@ define([], function () {
 			 * Allows to adapt a query according to a set of policies. 
 			 * @method adaptQuery
 			 * @param {JSONObject} query A query of format QF1.
+			 * @param {JSONObject} policies A set of policies (attribute and level).
 			 * @return {JSONObject} A query of format QF1. 
 			 */			
-			adaptQuery(query, policy){
+			adaptQuery(query, policies){
 				var adaptedQuery = query;
 				var interests = [];
 				var languages = [];
-				for (var i = 0 ; i < policy.length ; i++){
-					var entry = policy[i];
+				for (var i = 0 ; i < policies.length ; i++){
+					var entry = policies[i];
 					var attribute = entry.attribute;
 					var level = entry.level;
 					if ((attribute == "ageRangePolicy") && (level == 0)){
