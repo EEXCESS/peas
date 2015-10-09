@@ -91,8 +91,8 @@ init(url){ ... }
 
 This example shows how to use them: 
 ```javascript
-require(["peas_adapt"], function(peas_adapt){
-	peas_adapt.init("http://localhost:8080/eexcess-privacy-proxy-issuer-1.0-SNAPSHOT/issuer/");
+require(["peas_indist"], function(peas_indist){
+	peas_indist.init("http://localhost:8080/eexcess-privacy-proxy-issuer-1.0-SNAPSHOT/issuer/");
 });
 ```
 
