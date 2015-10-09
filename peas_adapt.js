@@ -10,7 +10,7 @@ define([], function () {
 	var peas_adapt = {
 			
 			/**
-			 * TODO
+			 * Allows to adapt a query according to a set of policies. 
 			 * @method adaptQuery
 			 * @param {JSONObject} query A query of format QF1.
 			 * @return {JSONObject} A query of format QF1. 

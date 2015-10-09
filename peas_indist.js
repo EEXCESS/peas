@@ -43,20 +43,14 @@ define(["jquery", "peas/util", "graph"], function ($, util, graph) {
 	var peas_indist = {
 			
 			/**
-			 * TODO
+			 * Allows to change the default URL of the server hosting the PEAS external services. 
+			 * The default value is: https://eexcess-dev.joanneum.at/eexcess-privacy-proxy-issuer-1.0-SNAPSHOT/issuer/
+			 * @method initUrl
+			 * @param {String} url URL of the server. 
 			 */
-			initUrl(url){
+			init(url){
 				serviceCog = url + serviceCogName;
 				serviceMcs = url + serviceMcsName;
-				initializeCog();
-				initializeMcs();
-			},
-			/**
-			 * TODO
-			 */
-			initServices(initServiceCog, initServiceMcs){
-				serviceCog = initServiceCog;
-				serviceMcs = initServiceMcs;
 				initializeCog();
 				initializeMcs();
 			},
