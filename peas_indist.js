@@ -48,7 +48,7 @@ define(["jquery", "peas/util", "graph"], function ($, util, graph) {
 			 * @method initUrl
 			 * @param {String} url URL of the server. 
 			 */
-			init(url){
+			init:function(url){
 				serviceCog = url + serviceCogName;
 				serviceMcs = url + serviceMcsName;
 				initializeCog();
@@ -63,7 +63,7 @@ define(["jquery", "peas/util", "graph"], function ($, util, graph) {
 			 * @param {Integer} k The desired number of fake queries. 
 			 * @return {JSONObject} A query of format QF2. 
 			 */
-			obfuscateQuery(query, k){
+			obfuscateQuery:function(query, k){
 				var obfuscatedQuery = query;
 				var arrayCK = []; // CK = Context Keywords
 				var profile = []; // XXX Should be initialized with the user profile 
@@ -114,7 +114,7 @@ define(["jquery", "peas/util", "graph"], function ($, util, graph) {
 			 * @param {JSONObject} query A query of format QF1. 
 			 * @return {JSONObject} A result set of format RF1. 
 			 */
-			filterResults(results, query){
+			filterResults:function(results, query){
 				var arrayResult = results.results;
 				var maxScore = -1;
 				var maxResult = [];

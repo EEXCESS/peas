@@ -18,7 +18,7 @@ define([], function () {
 		 * @param {Array} arr2 Another array of strings. 
 		 * @return {Boolean} True if the two arrays have an element in common; False otherwise.  
 		 */
-		intersect(arr1, arr2){
+		intersect:function(arr1, arr2){
 			var intersect = false;
 			for (var i = 0 ; (i < arr1.length) && (!intersect) ; i++){
 				intersect = this.contains(arr2, arr1[i]);
@@ -33,7 +33,7 @@ define([], function () {
 		 * @param {String} term A string. 
 		 * @return {Boolean} True if term is an element of the array; False otherwise. 
 		 */
-		contains(array, term){
+		contains:function(array, term){
 			var found = false;
 			for (var i = 0 ; (i < array.length) && (!found) ; i++){
 				found = (array[i] == term);
@@ -48,7 +48,7 @@ define([], function () {
 		 * @param {Array} arr2 Another array. 
 		 * @return {Array} An array containing all the elements of arr1 and arr2 (possibly with duplicates).  
 		 */
-		merge(arr1, arr2){
+		merge:function(arr1, arr2){
 			var arr = new Array();
 			for (var i = 0 ; i < arr1.length ; i++){
 				arr[i] = arr1[i];
@@ -70,7 +70,7 @@ define([], function () {
 		 * @param {String} word A word. 
 		 * @return {Integer} The number of times word appears in words. 
 		 */
-		nbInstances(words, word){
+		nbInstances:function(words, word){
 			words = words.toLowerCase();
 			word = word.toLowerCase();
 			var array = words.split(word);
@@ -82,7 +82,7 @@ define([], function () {
 		 * @method today
 		 * @return {Date} The current date. 
 		 */
-		today(){
+		today:function(){
 			return new Date();
 		}, 
 		
@@ -91,7 +91,7 @@ define([], function () {
 		 * @method yesterday
 		 * @return {Date} Yesterday's date. 
 		 */
-		yesterday(){
+		yesterday:function(){
 			var d = new Date();
 			d.setDate(d.getDay()-1);
 			return d;
@@ -107,7 +107,7 @@ define([], function () {
 		 * @param {Date} d2 Another date. 
 		 * @return True if d1 happened before d2; False otherwise.  
 		 */
-		before(d1, d2){
+		before:function(d1, d2){
 			var t1 = d1.getTime();
 			var t2 = d2.getTime();
 			return (t1 < t2);

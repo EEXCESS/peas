@@ -18,7 +18,7 @@ define([], function () {
 			 * @param {JSONObject} policies A set of policies (attribute and level).
 			 * @return {JSONObject} A query of format QF1. 
 			 */			
-			adaptQuery(query, policies){
+			adaptQuery:function(query, policies){
 				var adaptedQuery = query;
 				var interests = [];
 				var languages = [];
