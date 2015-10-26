@@ -11,6 +11,10 @@ define([], function () {
 	
 	var peas_adapt = {
 			
+			enrichQuery(query){
+				return query;
+			},
+			
 			/**
 			 * Allows to adapt a query according to a set of policies. 
 			 * @method adaptQuery
@@ -18,7 +22,7 @@ define([], function () {
 			 * @param {JSONObject} policies A set of policies (attribute and level).
 			 * @return {JSONObject} A query of format QF1. 
 			 */			
-			adaptQuery:function(query, policies){
+			applyPolicies:function(query, policies){
 				var adaptedQuery = query;
 				var interests = [];
 				var languages = [];
