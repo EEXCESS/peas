@@ -140,8 +140,7 @@ define(["jquery", "peas/util", "graph"], function ($, util, graph) {
 		var fakeQuery = new Array();
 		var nbTerms = originalCK.length;
 		var nbStrategies = 3;
-		var strategy = Math.floor(Math.random() * nbStrategies) + 1; // Determines which strategy is going to be used: 1, 2 or 3
-		randomNumber = 1 /* 2 */ /* 3 */ ;  
+		var strategy = Math.floor(Math.random() * nbStrategies) + 1; // Determines which strategy is going to be used: 1, 2 or 3  
 
 		// We do a sequential inspection of the strategy to use, as it may evolve.
 		// For instance, if strategy 1 fails, then strategy 2 will be employed. 
@@ -156,7 +155,9 @@ define(["jquery", "peas/util", "graph"], function ($, util, graph) {
 				for (var i = 0 ; i < originalCK.length ; i++){
 					var fakeTerm = new Object();
 					fakeTerm.text = randomClique._vertices[i];
-					fakeTerm.weight = originalCK[i].weight;
+					fakeTerm.type = originalCK[i].type;
+					fakeTerm.isMainTopic = originalCK[i].isMainTopic;
+					fakeTerm.uri = originalCK[i].uri;
 					fakeQuery[i] = fakeTerm;
 				}
 			} else {
@@ -173,7 +174,9 @@ define(["jquery", "peas/util", "graph"], function ($, util, graph) {
 				for (var i = 0 ; i < originalCK.length ; i++){
 					var fakeTerm = new Object();
 					fakeTerm.text = randomClique._vertices[i];
-					fakeTerm.weight = originalCK[i].weight;
+					fakeTerm.type = originalCK[i].type;
+					fakeTerm.isMainTopic = originalCK[i].isMainTopic;
+					fakeTerm.uri = originalCK[i].uri;
 					fakeQuery[i] = fakeTerm;
 				}
 			} else {
@@ -191,7 +194,9 @@ define(["jquery", "peas/util", "graph"], function ($, util, graph) {
 					var randomIdx =  Math.floor(Math.random() * vocabulary.length);
 					if (!util.contains(ckToArray(fakeQuery), vocabulary[randomIdx])){ // To prevent a word to be added twice
 						fakeTerm.text = vocabulary[randomIdx];
-						fakeTerm.weight = originalCK[i].weight;
+						fakeTerm.type = originalCK[i].type;
+						fakeTerm.isMainTopic = originalCK[i].isMainTopic;
+						fakeTerm.uri = originalCK[i].uri;
 						fakeQuery[i] = fakeTerm;
 						i++;
 					}

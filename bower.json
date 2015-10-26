@@ -5,6 +5,9 @@
     "EEXCESS INSA"
   ],
   "description": "Description of PEAS",
+  "main": [
+    "peas_indist.js", "peas_adapt.js"
+  ],
   "moduleType": [
     "amd",
     "globals"
