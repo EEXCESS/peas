@@ -1,3 +1,7 @@
+/**
+ * NOT USED ANYMORE
+ * SEE chrome-extension/js/user_profile/profileManager
+ */
 /** 
  * @module peas_adapt
  */
