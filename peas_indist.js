@@ -215,6 +215,7 @@ define(["jquery", "peas/util", "graph"], function ($, util, graph) {
 		var score = 0;
 		var resultsEntries = result.result;
 		var nbKeywords = keywords.length;
+		console.log(keywords);
 		var nbEntries = resultsEntries.length;
 		for (var i = 0 ; i < nbEntries ; i++){
 			var entry = resultsEntries[i];
