@@ -215,19 +215,20 @@ define(["jquery", "peas/util", "graph"], function ($, util, graph) {
 		var score = 0;
 		var resultsEntries = result.result;
 		var nbKeywords = keywords.length;
-		console.log(keywords);
 		var nbEntries = resultsEntries.length;
 		for (var i = 0 ; i < nbEntries ; i++){
 			var entry = resultsEntries[i];
 			var scoreEntry = 0;
 			for (var j = 0 ; j < nbKeywords ; j++){
-				var keyword = keywords[j];
+				var keyword = keywords[j].text;
 				var scoreKeyword = 0;
-				if (entry.title != undefined){
-					scoreKeyword += util.nbInstances(entry.title, keyword.text);
-				}
-				if (entry.description != undefined){
-					scoreKeyword += util.nbInstances(entry.description, keyword.text);
+				if (keyword != undefined){
+					if (entry.title != undefined){
+						scoreKeyword += util.nbInstances(entry.title, keyword);
+					}
+					if (entry.description != undefined){
+						scoreKeyword += util.nbInstances(entry.description, keyword);
+					}
 				}
 				scoreEntry += scoreKeyword;
 			}
@@ -246,8 +247,8 @@ define(["jquery", "peas/util", "graph"], function ($, util, graph) {
 		if (lastUpdate != null){
 			freshCogNeeded = (util.before(new Date(lastUpdate), util.yesterday()));
 		}
-		//if (!cogStoredLocally || freshCogNeeded){
-		if (true){
+		if (!cogStoredLocally || freshCogNeeded){
+		//if (true){
 			getAndSaveRemoteCog();
 		} else {
 			var cogJson = JSON.parse(localStorage.getItem(storageCogId));
