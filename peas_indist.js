@@ -64,7 +64,7 @@ define(["jquery", "peas/util", "graph"], function ($, util, graph) {
 			 * @return {JSONObject} A query of format QF2. 
 			 */
 			obfuscateQuery:function(query, k){
-				var obfuscatedQuery = query;
+				var obfuscatedQuery = JSON.parse(JSON.stringify(query));
 				var arrayCK = []; // CK = Context Keywords
 				var profile = []; // XXX Should be initialized with the user profile 
 				var originalCK = query.contextKeywords;
