@@ -155,9 +155,9 @@ define(["jquery", "peas/util", "graph"], function ($, util, graph) {
 				for (var i = 0 ; i < originalCK.length ; i++){
 					var fakeTerm = new Object();
 					fakeTerm.text = randomClique._vertices[i];
-					fakeTerm.type = originalCK[i].type;
 					fakeTerm.isMainTopic = originalCK[i].isMainTopic;
-					fakeTerm.uri = originalCK[i].uri;
+					//fakeTerm.type = originalCK[i].type;
+					//fakeTerm.uri = originalCK[i].uri;
 					fakeQuery[i] = fakeTerm;
 				}
 			} else {
@@ -174,9 +174,9 @@ define(["jquery", "peas/util", "graph"], function ($, util, graph) {
 				for (var i = 0 ; i < originalCK.length ; i++){
 					var fakeTerm = new Object();
 					fakeTerm.text = randomClique._vertices[i];
-					fakeTerm.type = originalCK[i].type;
 					fakeTerm.isMainTopic = originalCK[i].isMainTopic;
-					fakeTerm.uri = originalCK[i].uri;
+					//fakeTerm.type = originalCK[i].type;
+					//fakeTerm.uri = originalCK[i].uri;
 					fakeQuery[i] = fakeTerm;
 				}
 			} else {
@@ -194,9 +194,9 @@ define(["jquery", "peas/util", "graph"], function ($, util, graph) {
 					var randomIdx =  Math.floor(Math.random() * vocabulary.length);
 					if (!util.contains(ckToArray(fakeQuery), vocabulary[randomIdx])){ // To prevent a word to be added twice
 						fakeTerm.text = vocabulary[randomIdx];
-						fakeTerm.type = originalCK[i].type;
 						fakeTerm.isMainTopic = originalCK[i].isMainTopic;
-						fakeTerm.uri = originalCK[i].uri;
+						//fakeTerm.type = originalCK[i].type;
+						//fakeTerm.uri = originalCK[i].uri;
 						fakeQuery[i] = fakeTerm;
 						i++;
 					}
