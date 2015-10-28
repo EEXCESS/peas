@@ -4,7 +4,7 @@ It is composed of the following protocols:
 - an [unlinkability protocol](https://github.com/EEXCESS/peas#indistinguishability-protocol) (peas_unlink): aims at hiding users identity, 
 - an indistinguishability protocol (peas_indist): aims at hiding users intents by obfuscating their queries,
 
-The request and response formats handled in these protocols are described [here](https://github.com/EEXCESS/eexcess/wiki/Request-and-Response-format-for-call-to-federated-recommender-and-privacy-proxy#request-and-response-formats-to-interact-with-the-privacy-proxy). 
+The request and response formats handled in these protocols are described [here](http://purl.org/eexcess/documentation/request-and-response-format#request-and-response-formats-to-interact-with-the-privacy-proxy). 
 
 The PEAS protocol considers specific formats to exchange data. These formats are described [here](https://github.com/EEXCESS/peas#json-formats). 
 
