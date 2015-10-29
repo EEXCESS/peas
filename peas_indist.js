@@ -156,7 +156,7 @@ define(["jquery", "peas/util", "graph"], function ($, util, graph) {
 					var fakeTerm = new Object();
 					fakeTerm.text = randomClique._vertices[i];
 					fakeTerm.isMainTopic = originalCK[i].isMainTopic;
-					//fakeTerm.type = originalCK[i].type;
+					fakeTerm.type = "Misc";
 					//fakeTerm.uri = originalCK[i].uri;
 					fakeQuery[i] = fakeTerm;
 				}
@@ -175,7 +175,7 @@ define(["jquery", "peas/util", "graph"], function ($, util, graph) {
 					var fakeTerm = new Object();
 					fakeTerm.text = randomClique._vertices[i];
 					fakeTerm.isMainTopic = originalCK[i].isMainTopic;
-					//fakeTerm.type = originalCK[i].type;
+					fakeTerm.type = "Misc";
 					//fakeTerm.uri = originalCK[i].uri;
 					fakeQuery[i] = fakeTerm;
 				}
@@ -195,7 +195,7 @@ define(["jquery", "peas/util", "graph"], function ($, util, graph) {
 					if (!util.contains(ckToArray(fakeQuery), vocabulary[randomIdx])){ // To prevent a word to be added twice
 						fakeTerm.text = vocabulary[randomIdx];
 						fakeTerm.isMainTopic = originalCK[i].isMainTopic;
-						//fakeTerm.type = originalCK[i].type;
+						fakeTerm.type = "Misc";
 						//fakeTerm.uri = originalCK[i].uri;
 						fakeQuery[i] = fakeTerm;
 						i++;
